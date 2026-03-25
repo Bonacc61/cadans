@@ -1,0 +1,7 @@
+Perfect! Afspraak gemaakt voor {date} om {time}.
+
+Locatie: {location}
+Duur: {duration}
+Google Agenda-uitnodiging gestuurd naar {email}
+
+Tot dan! 👋

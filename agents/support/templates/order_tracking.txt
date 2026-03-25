@@ -1,0 +1,9 @@
+Bestelling #{order_number} (€{amount}) is {status_nl}! 📦
+
+Track & Trace: {tracking_code}
+Status: {status_description}
+Verwachte levering: {estimated_delivery}
+
+Je kunt je pakket live volgen: {tracking_url}
+
+Nog vragen? Laat het me weten!

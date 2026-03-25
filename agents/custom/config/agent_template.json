@@ -1,0 +1,56 @@
+{
+  "agent_id": "custom-{client-slug}",
+  "name": "Custom Agent - {Client Name}",
+  "version": "1.0.0",
+  "description": "Bespoke AI solution for {industry/use-case}",
+  "pricing": {
+    "setup": "{4000-25000}",
+    "monthly": "{500-2000}",
+    "complexity": "simple|medium|complex",
+    "revenue_share_option": {
+      "enabled": false,
+      "percentage": 10,
+      "min_monthly": 500
+    }
+  },
+  "development": {
+    "timeline_weeks": 9,
+    "phases": [
+      {
+        "name": "Discovery",
+        "week": 1,
+        "deliverables": ["Workflow diagram", "Integration feasibility report"]
+      },
+      {
+        "name": "Design",
+        "week": 2,
+        "deliverables": ["Technical spec (10-15 pages)", "Prototype mockups"]
+      },
+      {
+        "name": "Build",
+        "weeks": "3-6",
+        "deliverables": ["MVP (2-3 workflows operational)"]
+      },
+      {
+        "name": "Pilot",
+        "weeks": "7-8",
+        "deliverables": ["Production-ready agent"]
+      },
+      {
+        "name": "Handover",
+        "week": 9,
+        "deliverables": ["Documentation", "Training", "30-day support plan"]
+      }
+    ]
+  },
+  "integrations": {
+    "custom": []
+  },
+  "workflows": [],
+  "channels": ["whatsapp", "email"],
+  "skills": {
+    "custom": []
+  },
+  "gdpr_compliant": true,
+  "default_language": "nl"
+}

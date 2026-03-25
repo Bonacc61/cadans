@@ -1,0 +1,12 @@
+Beste {recipient_name},
+
+{time_period} heb ik de volgende tijden beschikbaar:
+
+{availability_list}
+
+Welke tijd past het beste? Dan stuur ik je een agenda-uitnodiging.
+
+{location_question}
+
+Met vriendelijke groet,
+{sender_name}

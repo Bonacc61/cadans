@@ -1,0 +1,12 @@
+📊 {quarter} {year} BTW overzicht:
+
+Omzet (hoog tarief 21%): €{revenue_high} → BTW €{vat_revenue_high}
+Inkoop (hoog tarief 21%): €{costs_high} → BTW €{vat_costs_high}
+Omzet (laag tarief 9%): €{revenue_low} → BTW €{vat_revenue_low}
+Inkoop (laag tarief 9%): €{costs_low} → BTW €{vat_costs_low}
+
+Te betalen: €{vat_payable}
+
+Deadline: {deadline_date}
+
+Wil je de aangifte voorbereiden?

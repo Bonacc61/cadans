@@ -1,0 +1,14 @@
+Beste {client_name},
+
+Kleine herinnering voor factuur #{invoice_number} van €{amount} (vervaldatum: {due_date}).
+
+Mogelijk over het hoofd gezien? Geen probleem!
+
+Je kunt betalen via:
+- Bankoverschrijving: {iban}
+- iDEAL-link: {payment_link}
+
+Alvast bedankt!
+
+Met vriendelijke groet,
+{company_name}

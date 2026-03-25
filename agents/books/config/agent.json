@@ -1,0 +1,107 @@
+{
+  "agent_id": "books",
+  "name": "Books",
+  "version": "1.0.0",
+  "description": "Bookkeeping Assistant - Invoicing, expense tracking, VAT returns, bank reconciliation",
+  "pricing": {
+    "tiers": [
+      {
+        "name": "ZZP",
+        "monthly": 150,
+        "setup": 1500,
+        "features": ["1 company", "50 invoices/mo", "1 bank account"]
+      },
+      {
+        "name": "MKB",
+        "monthly": 250,
+        "setup": 2500,
+        "features": ["1 company", "200 invoices/mo", "3 bank accounts"]
+      },
+      {
+        "name": "Boekhouder",
+        "monthly": 600,
+        "setup": 3000,
+        "features": ["10 companies (€60/ea)", "Multi-tenant", "White-label"]
+      }
+    ],
+    "bundles": {
+      "PA_Books": {
+        "monthly": 500,
+        "savings": 100,
+        "description": "Personal Assistant + Books"
+      }
+    }
+  },
+  "integrations": {
+    "accounting": {
+      "exact_online": {
+        "api": "REST",
+        "status": "live",
+        "market_share_nl": "38%",
+        "endpoints": [
+          "/api/v1/current/crm/Accounts",
+          "/api/v1/current/salesinvoice/SalesInvoices",
+          "/api/v1/current/financial/BankEntries"
+        ]
+      },
+      "moneybird": {
+        "api": "REST",
+        "status": "live",
+        "market_share_nl": "22%",
+        "endpoints": [
+          "/api/v2/{administration_id}/contacts",
+          "/api/v2/{administration_id}/sales_invoices",
+          "/api/v2/{administration_id}/financial_statements"
+        ]
+      },
+      "twinfield": {
+        "api": "SOAP",
+        "status": "roadmap",
+        "market_share_nl": "18%"
+      },
+      "snelstart": {
+        "api": "REST",
+        "status": "roadmap",
+        "market_share_nl": "12%"
+      }
+    },
+    "banking": {
+      "psd2": {
+        "providers": ["ING", "Rabobank", "ABN AMRO"],
+        "standard": "Berlin Group NextGenPSD2",
+        "requires_consent": true
+      }
+    },
+    "ocr": {
+      "taggun": {
+        "use": "receipt_scanning",
+        "accuracy": "92%",
+        "cost_per_scan": "$0.01"
+      },
+      "tesseract": {
+        "use": "fallback",
+        "local": true,
+        "free": true
+      }
+    }
+  },
+  "workflows": [
+    "invoice_creation",
+    "expense_tracking",
+    "bank_reconciliation",
+    "vat_returns",
+    "financial_reporting"
+  ],
+  "channels": ["whatsapp", "email"],
+  "dutch_tax_compliance": {
+    "vat_rates": {
+      "high": 0.21,
+      "low": 0.09,
+      "zero": 0.00
+    },
+    "retention_years": 7,
+    "vat_return_frequency": "quarterly"
+  },
+  "gdpr_compliant": true,
+  "default_language": "nl"
+}

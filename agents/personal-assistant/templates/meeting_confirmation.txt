@@ -1,0 +1,9 @@
+Perfect! Afspraak gemaakt voor {date} om {time}.
+
+Agenda-uitnodiging gestuurd naar {attendee_email}
+Locatie: {location}
+Duur: {duration}
+
+{meeting_link}
+
+Tot dan!

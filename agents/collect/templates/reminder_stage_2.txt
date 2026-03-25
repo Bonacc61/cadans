@@ -1,0 +1,14 @@
+Beste {client_name},
+
+Herinnering: factuur #{invoice_number} (€{amount}) is nu {days_overdue} dagen te laat.
+
+Is er iets mis met de factuur? Laat het ons dan weten, we denken graag mee.
+
+Kunnen we binnenkort betaling verwachten?
+
+Je kunt betalen via:
+- Bankoverschrijving: {iban}
+- iDEAL-link: {payment_link}
+
+Met vriendelijke groet,
+{company_name}

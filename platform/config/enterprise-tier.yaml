@@ -1,0 +1,104 @@
+# Enterprise Tier Configuration
+# €499/mo - Dedicated VPS, full isolation, custom requirements
+
+tier: enterprise
+monthly_price_cents: 49900
+monthly_price_display: "€499"
+
+# Resource Limits (dedicated VPS)
+resources:
+  cpu_limit_cores: 4.0
+  cpu_reservation_cores: 2.0
+  memory_limit_mb: 8192
+  memory_reservation_mb: 4096
+  storage_limit_gb: 100
+
+  network_bandwidth_mbps: 1000
+
+  # VPS specs (Hetzner CX31 or higher)
+  vps:
+    min_vcpu: 2
+    min_memory_gb: 8
+    min_storage_gb: 80
+    provider: hetzner
+    region: nbg1  # Nuremberg (EU/GDPR)
+
+# Features (unlimited)
+features:
+  channels:
+    - whatsapp
+    - telegram
+    - gmail
+    - slack
+    - discord
+    - teams  # Microsoft Teams
+    - custom  # Customer can request custom channels
+
+  skills:
+    - all_standard_skills
+    - custom_skills  # Customer can request custom development
+
+  integrations:
+    - google_workspace
+    - microsoft_365
+    - zapier
+    - stripe
+    - salesforce
+    - hubspot
+    - custom  # Customer can request custom integrations
+
+  ai:
+    model: "claude-3-5-sonnet-20241022"
+    fallback_model: "claude-3-opus-20240229"  # For complex tasks
+    max_tokens_per_month: unlimited  # Fair use policy
+    rate_limit_per_minute: unlimited
+
+  # Enterprise features
+  enterprise:
+    dedicated_vps: true
+    custom_domain: true  # e.g., ai.customer.nl
+    sso: true  # SAML/OAuth
+    audit_logs: true
+    custom_retention_policy: true
+    dedicated_support: true
+    sla_guarantees: true
+
+  # Data privacy
+  pattern_contribution:
+    enabled: false
+    required: false
+
+# Limitations (minimal)
+limitations:
+  max_groups: unlimited
+  max_contacts: unlimited
+  max_message_history_days: unlimited  # Customer controls retention
+  max_file_upload_mb: 500
+
+# SLA (strict)
+sla:
+  uptime_percent: 99.9
+  support_response_hours: 2  # 2-hour response time
+  backup_frequency: hourly
+  backup_retention_days: 90
+  disaster_recovery_rto_hours: 4  # Recovery Time Objective
+  disaster_recovery_rpo_hours: 1  # Recovery Point Objective
+
+# Custom Requirements
+custom:
+  white_label: optional  # Remove "Powered by Cadans" branding
+  dedicated_account_manager: true
+  monthly_business_review: true
+  custom_contract: true  # Negotiate terms
+  volume_discount: available  # For >5 licenses
+
+# Security
+security:
+  dedicated_firewall: true
+  ip_whitelisting: available
+  vpn_access: available
+  penetration_testing: annual
+  compliance:
+    - gdpr
+    - iso27001  # Optional certification
+    - soc2  # Optional certification

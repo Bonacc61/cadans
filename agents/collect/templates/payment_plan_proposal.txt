@@ -1,0 +1,15 @@
+Beste {client_name},
+
+Natuurlijk kunnen we een betalingsregeling treffen.
+
+Ik stel voor:
+- Termijn 1: €{installment_1_amount} op {installment_1_date}
+- Termijn 2: €{installment_2_amount} op {installment_2_date}
+- Termijn 3: €{installment_3_amount} op {installment_3_date}
+
+Totaal: €{total_amount} (incl. €{admin_fee} administratiekosten)
+
+Akkoord? Dan stuur ik je een bevestiging.
+
+Met vriendelijke groet,
+{company_name}

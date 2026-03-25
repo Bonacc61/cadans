@@ -1,0 +1,73 @@
+# Private Tier Configuration
+# €99/mo - Multi-tenant VPS, data stays private (no pattern contribution)
+
+tier: private
+monthly_price_cents: 9900
+monthly_price_display: "€99"
+
+# Resource Limits
+resources:
+  cpu_limit_cores: 1.5
+  cpu_reservation_cores: 0.75
+  memory_limit_mb: 2048
+  memory_reservation_mb: 1024
+  storage_limit_gb: 10
+
+  network_bandwidth_mbps: 250
+
+# Features
+features:
+  channels:
+    - whatsapp
+    - telegram
+    - gmail
+    - slack
+    - discord  # Extra channel
+
+  skills:
+    - email_management
+    - calendar_scheduling
+    - task_tracking
+    - document_summarization
+    - contract_analysis  # Extra skill
+    - invoice_processing  # Extra skill
+
+  integrations:
+    - google_workspace
+    - microsoft_365
+    - zapier  # Extra integration
+    - stripe  # Extra integration
+
+  ai:
+    model: "claude-3-5-sonnet-20241022"
+    max_tokens_per_month: 2000000  # ~€30/mo
+    rate_limit_per_minute: 40
+
+  # Data privacy
+  pattern_contribution:
+    enabled: false
+    required: false  # Customer opted for privacy
+
+# Limitations (relaxed vs Shared)
+limitations:
+  max_groups: 10
+  max_contacts: 2000
+  max_message_history_days: 365
+  max_file_upload_mb: 50
+
+# SLA
+sla:
+  uptime_percent: 99.5
+  support_response_hours: 12
+  backup_frequency: daily
+  backup_retention_days: 30
+
+# Upgrade Path
+upgrade:
+  next_tier: enterprise
+  next_tier_price_cents: 49900
+  upsell_triggers:
+    - needs_dedicated_resources
+    - custom_integrations_required
+    - regulatory_compliance  # Banking, healthcare
+    - high_availability  # 99.9% uptime SLA

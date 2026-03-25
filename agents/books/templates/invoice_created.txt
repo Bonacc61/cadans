@@ -1,0 +1,6 @@
+Factuur #{invoice_number} aangemaakt en verstuurd naar {recipient_email}.
+
+Bedrag: €{amount_incl_vat} (excl. BTW: €{amount_excl_vat}, BTW {vat_rate}%: €{vat_amount})
+Vervaldatum: {due_date}
+
+{auto_reminder_status}

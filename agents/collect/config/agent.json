@@ -1,0 +1,44 @@
+{
+  "agent_id": "collect",
+  "name": "Collect",
+  "version": "1.0.0",
+  "description": "Collections & Receivables Agent - Automated payment reminders and debtor management",
+  "pricing": {
+    "tiers": [
+      {
+        "name": "ZZP",
+        "monthly": 100,
+        "setup": 1000,
+        "features": ["Up to 50 invoices", "Automated reminders only"]
+      },
+      {
+        "name": "MKB",
+        "monthly": 200,
+        "setup": 1500,
+        "features": ["Up to 500 invoices", "Escalation workflows", "Reports"]
+      },
+      {
+        "name": "Enterprise",
+        "monthly": 400,
+        "setup": 2000,
+        "features": ["Unlimited invoices", "Payment plans", "Incasso integration"]
+      }
+    ]
+  },
+  "integrations": {
+    "accounting": ["exact-online", "moneybird"],
+    "email": ["sendgrid", "gmail"],
+    "sms": ["messagebird"],
+    "incasso": ["graydon", "intrum"]
+  },
+  "workflows": [
+    "friendly_reminder",
+    "second_reminder",
+    "final_notice",
+    "payment_plan_negotiation",
+    "dispute_handling"
+  ],
+  "channels": ["email", "whatsapp", "sms"],
+  "gdpr_compliant": true,
+  "default_language": "nl"
+}

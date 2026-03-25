@@ -1,0 +1,29 @@
+{
+  "$schema": "https://mcp-schema.cadans.nl/v1/registry.json",
+  "description": "Example MCP configuration for client using Google Calendar",
+  "client": {
+    "slug": "example-client",
+    "name": "Example Dutch MKB Owner",
+    "email": "owner@example.nl",
+    "timezone": "Europe/Amsterdam"
+  },
+  "servers": {
+    "calendar": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/root/cadans/mcp/servers/calendar_mcp_server.py"],
+      "env": {
+        "CALENDAR_PROVIDER": "google",
+        "OAUTH_REFRESH_TOKEN": "1//0g_YOUR_REFRESH_TOKEN_HERE",
+        "CALENDAR_ID": "primary",
+        "BUFFER_MINUTES": "15",
+        "WORKING_HOURS_START": "09:00",
+        "WORKING_HOURS_END": "18:00",
+        "TIMEZONE": "Europe/Amsterdam",
+        "GOOGLE_CLIENT_ID": "YOUR_CLIENT_ID.apps.googleusercontent.com",
+        "GOOGLE_CLIENT_SECRET": "YOUR_CLIENT_SECRET"
+      },
+      "description": "Google Calendar integration for meeting scheduling"
+    }
+  }
+}

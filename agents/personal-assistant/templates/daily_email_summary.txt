@@ -1,0 +1,18 @@
+📬 Email Samenvatting ({date})
+
+⚠️ Urgent ({urgent_count}):
+{urgent_list}
+
+📋 Action ({action_count}):
+{action_list}
+
+ℹ️ FYI ({fyi_count}):
+{fyi_list}
+
+📦 Archived ({archived_count}):
+{archived_summary}
+
+────────────
+Totaal: {total_count} emails → {active_count} actief, {archived_count} gearchiveerd
+
+Wil je de urgente emails nu zien?

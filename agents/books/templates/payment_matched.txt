@@ -1,0 +1,8 @@
+✅ Betaling ontvangen: €{amount}
+
+Factuur: #{invoice_number}
+Van: {client_name}
+IBAN: {iban}
+Datum: {payment_date}
+
+Factuur gemarkeerd als BETAALD.

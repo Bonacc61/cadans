@@ -1,0 +1,27 @@
+{
+  "$schema": "https://mcp-schema.cadans.nl/v1/registry.json",
+  "description": "Example MCP configuration for client using Microsoft 365",
+  "client": {
+    "slug": "corporate-client",
+    "name": "Corporate Client B.V.",
+    "email": "it@corporate.nl",
+    "timezone": "Europe/Amsterdam"
+  },
+  "servers": {
+    "calendar": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/root/cadans/mcp/servers/calendar_mcp_server.py"],
+      "env": {
+        "CALENDAR_PROVIDER": "microsoft",
+        "OAUTH_REFRESH_TOKEN": "EwB_YOUR_MICROSOFT_TOKEN_HERE",
+        "CALENDAR_ID": "user@corporate.nl",
+        "BUFFER_MINUTES": "30",
+        "WORKING_HOURS_START": "08:00",
+        "WORKING_HOURS_END": "17:00",
+        "TIMEZONE": "Europe/Amsterdam"
+      },
+      "description": "Microsoft 365 Calendar integration (Graph API)"
+    }
+  }
+}

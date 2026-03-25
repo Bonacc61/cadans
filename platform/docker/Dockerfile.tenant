@@ -1,0 +1,46 @@
+# Cadans Tenant Container
+# Isolated NanoClaw instance for each customer
+
+FROM node:20-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    sqlite3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user for security
+RUN useradd -m -u 1000 -s /bin/bash nanoclaw
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --production && npm cache clean --force
+
+# Copy NanoClaw source
+COPY . .
+
+# Build TypeScript
+RUN npm run build
+
+# Create mount points for tenant-specific data
+# These will be bind-mounted at runtime from /opt/cadans/tenants/{tenant_id}/
+RUN mkdir -p /app/groups /app/.credentials /app/logs && \
+    chown -R nanoclaw:nanoclaw /app
+
+# Health check endpoint
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD node -e "process.exit(0)" || exit 1
+
+# Switch to non-root user
+USER nanoclaw
+
+# Expose ports (for future web UI)
+EXPOSE 3000
+
+# Start NanoClaw
+CMD ["npm", "start"]

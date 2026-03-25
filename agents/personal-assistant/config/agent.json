@@ -1,0 +1,88 @@
+{
+  "agent_id": "personal-assistant",
+  "name": "Personal Assistant",
+  "version": "1.0.0",
+  "description": "Core product - Multi-channel AI assistant for email, calendar, WhatsApp, and task management",
+  "pricing": {
+    "tiers": [
+      {
+        "name": "Standard",
+        "monthly": 250,
+        "setup": 2500,
+        "features": ["1 channel (email or WhatsApp)", "500 actions/mo"]
+      },
+      {
+        "name": "Plus",
+        "monthly": 350,
+        "setup": 4000,
+        "features": ["2 channels", "1,000 actions/mo", "Calendar sync"]
+      },
+      {
+        "name": "Enterprise",
+        "monthly": 500,
+        "setup": 6000,
+        "features": ["Unlimited channels", "3,000 actions/mo", "API access"]
+      }
+    ]
+  },
+  "integrations": {
+    "email": {
+      "gmail": {
+        "api": "Gmail API v1",
+        "scopes": ["gmail.readonly", "gmail.send", "gmail.modify"],
+        "requires_oauth": true
+      },
+      "outlook": {
+        "api": "Microsoft Graph",
+        "scopes": ["Mail.Read", "Mail.Send", "Mail.ReadWrite"],
+        "requires_oauth": true
+      }
+    },
+    "calendar": {
+      "google_calendar": {
+        "api": "Calendar API v3",
+        "scopes": ["calendar.readonly", "calendar.events"],
+        "requires_oauth": true
+      },
+      "microsoft_365": {
+        "api": "Microsoft Graph",
+        "scopes": ["Calendars.Read", "Calendars.ReadWrite"],
+        "requires_oauth": true
+      }
+    },
+    "messaging": {
+      "whatsapp": {
+        "protocol": "Baileys (WhatsApp Web)",
+        "requires_pairing": true,
+        "qr_code_auth": true
+      },
+      "telegram": {
+        "api": "Bot API",
+        "requires_bot_token": true
+      }
+    },
+    "storage": {
+      "google_drive": {
+        "api": "Drive API v3",
+        "use": "attachment_storage",
+        "requires_oauth": true
+      }
+    }
+  },
+  "workflows": [
+    "email_triage",
+    "meeting_scheduling",
+    "task_extraction",
+    "follow_up_tracking",
+    "context_retention"
+  ],
+  "channels": ["email", "whatsapp", "telegram"],
+  "capabilities": {
+    "inbox_zero_rate": 0.87,
+    "avg_response_time_minutes": 5,
+    "time_saved_hours_per_week": 12,
+    "languages": ["nl", "en"]
+  },
+  "gdpr_compliant": true,
+  "default_language": "nl"
+}

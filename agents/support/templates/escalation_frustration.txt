@@ -1,0 +1,7 @@
+Ik begrijp je frustratie. Dit verdient persoonlijke aandacht.
+
+Mijn collega {agent_name} belt je vandaag nog voor 17:00 om dit op te lossen.
+
+Telefoonnummer: {phone}
+
+Sorry voor het ongemak.

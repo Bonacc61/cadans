@@ -1,0 +1,108 @@
+version: '3.8'
+
+# Cadans Multi-Tenant Platform
+# Shared VPS configuration for Shared and Private tier customers
+#
+# Services are added dynamically by TenantManager.provisionTenant()
+# Each customer gets their own isolated container with resource limits
+
+services:
+  # Monitoring stack
+  cadans-monitoring:
+    image: prom/prometheus:latest
+    container_name: cadans-monitoring
+    restart: unless-stopped
+
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+
+    ports:
+      - "9090:9090"
+
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+
+    networks:
+      - monitoring
+
+  # Grafana for visualization (optional)
+  cadans-grafana:
+    image: grafana/grafana:latest
+    container_name: cadans-grafana
+    restart: unless-stopped
+
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards
+
+    ports:
+      - "3030:3000"
+
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=changeme
+      - GF_USERS_ALLOW_SIGN_UP=false
+
+    networks:
+      - monitoring
+
+  # Example tenant container (this will be replicated for each customer)
+  # Uncomment to test, or let TenantManager add services dynamically
+
+  # cadans-example-abc123:
+  #   build:
+  #     context: /root/NanoClaw
+  #     dockerfile: /root/cadans/platform/docker/Dockerfile.tenant
+  #   container_name: cadans-abc123
+  #   restart: unless-stopped
+  #
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '1.0'
+  #         memory: 1024M
+  #       reservations:
+  #         cpus: '0.5'
+  #         memory: 512M
+  #
+  #   volumes:
+  #     - /opt/cadans/tenants/abc123/groups:/app/groups
+  #     - /opt/cadans/tenants/abc123/credentials:/app/.credentials
+  #     - /opt/cadans/tenants/abc123/logs:/app/logs
+  #
+  #   environment:
+  #     - TENANT_ID=abc123
+  #     - TIER=shared
+  #     - COMPANY_NAME=Acme BV
+  #     - DATABASE_PATH=/app/groups/global/nanoclaw.db
+  #     - PATTERN_CONTRIBUTION=true
+  #
+  #   networks:
+  #     - tenant-abc123
+  #
+  #   healthcheck:
+  #     test: ["CMD", "node", "-e", "process.exit(0)"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
+  #
+  #   labels:
+  #     - "cadans.tenant_id=abc123"
+  #     - "cadans.tier=shared"
+  #     - "cadans.company=Acme BV"
+
+networks:
+  monitoring:
+    driver: bridge
+
+  # Tenant-specific networks will be added dynamically
+  # Example:
+  # tenant-abc123:
+  #   driver: bridge
+
+volumes:
+  prometheus-data:
+  grafana-data:

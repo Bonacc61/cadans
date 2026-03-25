@@ -1,0 +1,70 @@
+{
+  "$schema": "https://mcp-schema.cadans.nl/v1/registry.json",
+  "description": "Example MCP configuration with multiple integrations",
+  "client": {
+    "slug": "premium-client",
+    "name": "Premium Client Plus",
+    "email": "owner@premium.nl",
+    "timezone": "Europe/Amsterdam"
+  },
+  "servers": {
+    "calendar": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/root/cadans/mcp/servers/calendar_mcp_server.py"],
+      "env": {
+        "CALENDAR_PROVIDER": "google",
+        "OAUTH_REFRESH_TOKEN": "${CALENDAR_OAUTH_TOKEN}",
+        "CALENDAR_ID": "primary",
+        "BUFFER_MINUTES": "15",
+        "WORKING_HOURS_START": "09:00",
+        "WORKING_HOURS_END": "18:00",
+        "TIMEZONE": "Europe/Amsterdam"
+      },
+      "description": "Google Calendar for meeting scheduling"
+    },
+    "email": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/root/cadans/mcp/servers/email_mcp_server.py"],
+      "env": {
+        "EMAIL_PROVIDER": "gmail",
+        "OAUTH_REFRESH_TOKEN": "${EMAIL_OAUTH_TOKEN}",
+        "EMAIL_ADDRESS": "owner@premium.nl",
+        "VIP_SENDERS": "boss@company.nl,accountant@tax.nl,lawyer@legal.nl"
+      },
+      "description": "Gmail integration for email triage and drafting",
+      "disabled": false
+    },
+    "ecommerce": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/root/cadans/mcp/servers/ecommerce_mcp_server.py"],
+      "env": {
+        "ECOMMERCE_PROVIDER": "woocommerce",
+        "API_URL": "https://shop.premium.nl",
+        "API_KEY": "${WOOCOMMERCE_KEY}",
+        "API_SECRET": "${WOOCOMMERCE_SECRET}"
+      },
+      "description": "WooCommerce integration for order tracking",
+      "disabled": false
+    },
+    "knowledge": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/root/cadans/mcp/servers/knowledge_mcp_server.py"],
+      "env": {
+        "KB_PATH": "/opt/cadans/clients/premium-client/knowledge-base.db",
+        "EMBEDDING_MODEL": "text-embedding-3-small",
+        "CONFIDENCE_THRESHOLD": "0.75"
+      },
+      "description": "Knowledge base RAG for customer support",
+      "disabled": false
+    }
+  },
+  "notes": [
+    "This configuration enables all MCP servers for a premium PA + Support agent",
+    "Use ${VAR} syntax for secrets - values pulled from client's .env file",
+    "Set disabled: true to temporarily disable a server without removing config"
+  ]
+}

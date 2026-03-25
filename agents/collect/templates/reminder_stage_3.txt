@@ -1,0 +1,18 @@
+Beste {client_name},
+
+Tweede herinnering: factuur #{invoice_number} is nu {days_overdue} dagen vervallen.
+
+Bedrag: €{amount}
+Vervaldatum: {due_date}
+Administratiekosten: €40
+
+Graag betaling binnen 5 werkdagen om verdere incassostappen te voorkomen.
+
+Je kunt betalen via:
+- Bankoverschrijving: {iban}
+- iDEAL-link: {payment_link}
+
+Bij vragen, neem contact op: {email} / {phone}
+
+Met vriendelijke groet,
+{company_name}

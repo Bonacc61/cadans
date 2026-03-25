@@ -1,0 +1,59 @@
+{
+  "servers": {
+    "calendar": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/opt/cadans/scripts/mcp-servers/calendar_mcp_server.py"],
+      "env": {
+        "CALENDAR_PROVIDER": "${CALENDAR_PROVIDER}",
+        "OAUTH_REFRESH_TOKEN": "${CALENDAR_OAUTH_TOKEN}",
+        "CALENDAR_ID": "${CALENDAR_ID}",
+        "BUFFER_MINUTES": "15",
+        "WORKING_HOURS_START": "09:00",
+        "WORKING_HOURS_END": "18:00",
+        "TIMEZONE": "Europe/Amsterdam",
+        "GOOGLE_CLIENT_ID": "${GOOGLE_CLIENT_ID}",
+        "GOOGLE_CLIENT_SECRET": "${GOOGLE_CLIENT_SECRET}"
+      },
+      "description": "Calendar integration (Google/Microsoft/CalDAV)"
+    },
+    "_email": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/opt/cadans/scripts/mcp-servers/email_mcp_server.py"],
+      "env": {
+        "EMAIL_PROVIDER": "${EMAIL_PROVIDER}",
+        "OAUTH_REFRESH_TOKEN": "${EMAIL_OAUTH_TOKEN}",
+        "EMAIL_ADDRESS": "${EMAIL_ADDRESS}",
+        "VIP_SENDERS": "${VIP_EMAIL_LIST}"
+      },
+      "description": "Email integration (Gmail/Outlook) - remove _ to enable",
+      "disabled": true
+    },
+    "_ecommerce": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/opt/cadans/scripts/mcp-servers/ecommerce_mcp_server.py"],
+      "env": {
+        "ECOMMERCE_PROVIDER": "${ECOMMERCE_PROVIDER}",
+        "API_URL": "${ECOMMERCE_API_URL}",
+        "API_KEY": "${ECOMMERCE_API_KEY}",
+        "API_SECRET": "${ECOMMERCE_API_SECRET}"
+      },
+      "description": "E-commerce integration (WooCommerce/Shopify) - remove _ to enable",
+      "disabled": true
+    },
+    "_knowledge": {
+      "type": "stdio",
+      "command": "python3",
+      "args": ["/opt/cadans/scripts/mcp-servers/knowledge_mcp_server.py"],
+      "env": {
+        "KB_PATH": "/opt/cadans/clients/${CLIENT_SLUG}/knowledge-base.db",
+        "EMBEDDING_MODEL": "text-embedding-3-small",
+        "CONFIDENCE_THRESHOLD": "0.75"
+      },
+      "description": "Knowledge base RAG system - remove _ to enable",
+      "disabled": true
+    }
+  }
+}

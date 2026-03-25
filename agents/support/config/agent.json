@@ -1,0 +1,51 @@
+{
+  "agent_id": "support",
+  "name": "Support",
+  "version": "1.0.0",
+  "description": "Customer Support Automation - FAQ, order tracking, appointment scheduling, ticket triage",
+  "pricing": {
+    "tiers": [
+      {
+        "name": "Starter",
+        "monthly": 150,
+        "setup": 1500,
+        "features": ["1 channel", "200 tickets/mo", "FAQ only"]
+      },
+      {
+        "name": "Growth",
+        "monthly": 300,
+        "setup": 2500,
+        "features": ["3 channels", "1,000 tickets/mo", "Order tracking"]
+      },
+      {
+        "name": "Enterprise",
+        "monthly": 600,
+        "setup": 3500,
+        "features": ["Unlimited channels/tickets", "Custom integrations"]
+      }
+    ]
+  },
+  "integrations": {
+    "ecommerce": ["woocommerce", "shopify", "lightspeed"],
+    "helpdesk": ["zendesk", "freshdesk", "gorgias"],
+    "shipping": ["postnl", "dhl", "dpd"],
+    "calendar": ["google-calendar", "microsoft-365"]
+  },
+  "workflows": [
+    "faq_automation",
+    "order_tracking",
+    "appointment_scheduling",
+    "ticket_triage",
+    "sentiment_analysis",
+    "escalation_handling"
+  ],
+  "channels": ["email", "whatsapp", "website-chat", "telegram"],
+  "capabilities": {
+    "auto_resolution_rate": 0.60,
+    "avg_response_time_seconds": 30,
+    "languages": ["nl", "en"],
+    "knowledge_base": "vector_search_rag"
+  },
+  "gdpr_compliant": true,
+  "default_language": "nl"
+}
