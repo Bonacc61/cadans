@@ -183,15 +183,33 @@
       isolation: isolate;
     }
 
-    /* Constellation net — animated background behind the hero (see hero-net.js) */
-    .hero-net {
+    /* Interactive dot-grid — a faint ink dot-grid everywhere, with an indigo
+       "spotlight" of brighter dots + a soft colour bloom that follow the cursor
+       (GPU-composited CSS mask; positions driven by --mx/--my in hero-grid.js).
+       Idle/reduced-motion just shows the static base grid. */
+    .hero-grid {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
       z-index: 0;
       pointer-events: none;
+      --mx: 50%; --my: 28%;
+      background: radial-gradient(320px circle at var(--mx) var(--my), rgba(79,70,229,0.07), rgba(13,148,136,0.04) 45%, transparent 72%);
     }
+    .hero-grid::before,
+    .hero-grid::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background-image: radial-gradient(circle, var(--dot) 1.4px, transparent 1.7px);
+      background-size: 30px 30px;
+    }
+    .hero-grid::before { --dot: rgba(15,23,42,0.10); }
+    .hero-grid::after {
+      --dot: var(--indigo);
+      -webkit-mask: radial-gradient(230px circle at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.4) 45%, transparent 72%);
+              mask: radial-gradient(230px circle at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.4) 45%, transparent 72%);
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-grid { background: none; } .hero-grid::after { opacity: 0.5; } }
     .hero > .hero-content,
     .hero > .chat-card { position: relative; z-index: 1; }
 
@@ -1051,19 +1069,19 @@
 
     <!-- ── HERO ── -->
     <section class="hero" aria-labelledby="h1">
-      <canvas class="hero-net" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="hero-eyebrow">
-          <span class="nl-only">WhatsApp · E-mail · Administratie</span>
-          <span class="en-only">WhatsApp · Email · Administration</span>
+          <span class="nl-only">AI-development · Workflow-automatisering</span>
+          <span class="en-only">AI development · Workflow automation</span>
         </p>
         <h1 class="hero-headline" id="h1">
-          <span class="nl-only">Jouw agent<br>houdt de <em>cadans.</em></span>
-          <span class="en-only">Your agent<br>keeps the <em>rhythm.</em></span>
+          <span class="nl-only">Breng je bedrijf<br>in <em>cadans.</em></span>
+          <span class="en-only">Get your business<br>in <em>rhythm.</em></span>
         </h1>
         <p class="hero-sub">
-          <span class="nl-only">Een AI-assistent die e-mail en WhatsApp afhandelt, afspraken inplant en elke ochtend rapporteert — zodat jij je focust op je vak.</span>
-          <span class="en-only">An AI assistant that handles email and WhatsApp, schedules appointments, and reports every morning — so you focus on your work.</span>
+          <span class="nl-only">AI en automatisering die het routinewerk overnemen — van WhatsApp-assistent en voicebot tot maatwerk-software en vindbaarheid in AI. Gebouwd voor het Nederlandse MKB.</span>
+          <span class="en-only">AI and automation that take over the busywork — from a WhatsApp assistant and voice bot to custom software and AI visibility. Built for Dutch SMEs.</span>
         </p>
         <div class="hero-btns">
           <a href="#contact" class="btn-ink">
@@ -1503,7 +1521,7 @@
     </div>
   </footer>
 
-  <script src="hero-net.js"></script>
+  <script src="hero-grid.js"></script>
   <script src="home.js"></script>
   <script src="lang.js"></script>
 </body>
