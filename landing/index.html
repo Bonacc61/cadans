@@ -179,7 +179,21 @@
       gap: 60px;
       align-items: center;
       min-height: calc(90vh - var(--nav-h));
+      background: var(--canvas);
+      isolation: isolate;
     }
+
+    /* Constellation net — animated background behind the hero (see hero-net.js) */
+    .hero-net {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero > .hero-content,
+    .hero > .chat-card { position: relative; z-index: 1; }
 
     .hero-eyebrow {
       font-family: var(--f-mono);
@@ -535,6 +549,7 @@
 
     .pt-tabs {
       display: flex;
+      flex-wrap: wrap;
       gap: 2px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       margin: 40px 0 48px;
@@ -1020,6 +1035,7 @@
 
     <!-- ── HERO ── -->
     <section class="hero" aria-labelledby="h1">
+      <canvas class="hero-net" aria-hidden="true"></canvas>
       <div class="hero-content">
         <p class="hero-eyebrow">
           <span class="nl-only">WhatsApp · E-mail · Administratie</span>
@@ -1152,14 +1168,16 @@
           <span class="en-only">The right assistant<br>for your challenge.</span>
         </h2>
         <p class="sec-sub">
-          <span class="nl-only">Van WhatsApp PA tot debiteurenbeheer — kies wat past.</span>
-          <span class="en-only">From WhatsApp PA to accounts receivable — choose what fits.</span>
+          <span class="nl-only">Van WhatsApp-assistent tot workflow-automatisering — kies wat jouw bedrijf vooruithelpt.</span>
+          <span class="en-only">From a WhatsApp assistant to workflow automation — pick what moves your business forward.</span>
         </p>
 
         <div class="pt-tabs" role="tablist">
-          <button class="pt-tab active" role="tab" id="tab-pa" data-tab="pa" aria-selected="true" aria-controls="panel-pa">Cadans PA</button>
-          <button class="pt-tab" role="tab" id="tab-collect" data-tab="collect" aria-selected="false" aria-controls="panel-collect">Cadans Collect</button>
-          <button class="pt-tab" role="tab" id="tab-geo" data-tab="geo" aria-selected="false" aria-controls="panel-geo">Cadans Geo</button>
+          <button class="pt-tab active" role="tab" id="tab-pa" data-tab="pa" aria-selected="true" aria-controls="panel-pa">WhatsApp PA</button>
+          <button class="pt-tab" role="tab" id="tab-webdev" data-tab="webdev" aria-selected="false" aria-controls="panel-webdev">Webdev</button>
+          <button class="pt-tab" role="tab" id="tab-geo" data-tab="geo" aria-selected="false" aria-controls="panel-geo">GEO</button>
+          <button class="pt-tab" role="tab" id="tab-voice" data-tab="voice" aria-selected="false" aria-controls="panel-voice">Voice</button>
+          <button class="pt-tab" role="tab" id="tab-automation" data-tab="automation" aria-selected="false" aria-controls="panel-automation"><span class="nl-only">Automatisering</span><span class="en-only">Automation</span></button>
         </div>
 
         <!-- PA -->
@@ -1171,15 +1189,15 @@
                 <span class="en-only">WhatsApp AI assistant</span>
               </h3>
               <p class="pt-desc">
-                <span class="nl-only">Cadans PA beantwoordt je WhatsApp en e-mail, plant afspraken in en maakt elke ochtend een digest. Jij beslist, de assistent voert uit.</span>
-                <span class="en-only">Cadans PA answers your WhatsApp and email, schedules appointments and creates a morning digest. You decide, the assistant executes.</span>
+                <span class="nl-only">Een AI-assistent in jouw schrijfstijl, gekoppeld aan je mailbox, agenda, WhatsApp en Google Drive. Hij leest mee, antwoordt, plant afspraken in en houdt je elke ochtend op de hoogte. Jij beslist, de assistent voert uit.</span>
+                <span class="en-only">An AI assistant in your own writing style, connected to your mailbox, calendar, WhatsApp and Google Drive. It reads along, replies, schedules appointments and briefs you every morning. You decide, the assistant executes.</span>
               </p>
               <ul class="pt-list">
-                <li><span class="nl-only">24/7 WhatsApp & e-mail afhandeling</span><span class="en-only">24/7 WhatsApp & email handling</span></li>
-                <li><span class="nl-only">Automatisch afsprakenbeheer</span><span class="en-only">Automatic appointment management</span></li>
-                <li><span class="nl-only">Dagelijkse samenvatting om 08:00</span><span class="en-only">Daily summary at 08:00</span></li>
-                <li><span class="nl-only">Offertes en facturen opvolgen</span><span class="en-only">Quote and invoice follow-up</span></li>
-                <li><span class="nl-only">GDPR-compliant, EU-servers</span><span class="en-only">GDPR-compliant, EU servers</span></li>
+                <li><span class="nl-only">Schrijft in jouw eigen stijl</span><span class="en-only">Writes in your own style</span></li>
+                <li><span class="nl-only">Gekoppeld aan mailbox, agenda & WhatsApp</span><span class="en-only">Connected to mailbox, calendar & WhatsApp</span></li>
+                <li><span class="nl-only">Doorzoekt en gebruikt je Google Drive</span><span class="en-only">Searches and uses your Google Drive</span></li>
+                <li><span class="nl-only">Plant afspraken in en volgt op</span><span class="en-only">Schedules appointments and follows up</span></li>
+                <li><span class="nl-only">Dagelijkse samenvatting om 08:00 · EU-servers</span><span class="en-only">Daily summary at 08:00 · EU servers</span></li>
               </ul>
             </div>
             <div class="pt-card">
@@ -1194,66 +1212,122 @@
           </div>
         </div>
 
-        <!-- Collect -->
-        <div class="pt-panel" id="panel-collect" role="tabpanel" aria-labelledby="tab-collect" hidden>
+        <!-- Webdev -->
+        <div class="pt-panel" id="panel-webdev" role="tabpanel" aria-labelledby="tab-webdev" hidden>
           <div class="pt-panel-body reveal">
             <div>
               <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
-                <span class="nl-only">Debiteurenbeheer op autopilot</span>
-                <span class="en-only">Accounts receivable on autopilot</span>
+                <span class="nl-only">Websites & webapplicaties</span>
+                <span class="en-only">Websites & web apps</span>
               </h3>
               <p class="pt-desc">
-                <span class="nl-only">Cadans Collect volgt openstaande facturen op via e-mail en WhatsApp — van vriendelijke herinnering tot juridische toon. Volledig GDPR-compliant.</span>
-                <span class="en-only">Cadans Collect follows up on outstanding invoices via email and WhatsApp — from friendly reminder to legal tone. Fully GDPR-compliant.</span>
+                <span class="nl-only">We bouwen snelle, moderne websites en webapplicaties — van landingspagina tot maatwerk-tool. Strak ontwerp, scherpe prijs, opgeleverd zonder gedoe.</span>
+                <span class="en-only">We build fast, modern websites and web applications — from landing page to custom tool. Clean design, sharp price, delivered without the hassle.</span>
               </p>
               <ul class="pt-list">
-                <li><span class="nl-only">5-staps escalatie (dag 15/22/30/36/46)</span><span class="en-only">5-step escalation (day 15/22/30/36/46)</span></li>
-                <li><span class="nl-only">Automatische wettelijke rente berekening</span><span class="en-only">Automatic statutory interest calculation</span></li>
-                <li><span class="nl-only">Koppeling met Exact Online / Moneybird</span><span class="en-only">Connects with Exact Online / Moneybird</span></li>
-                <li><span class="nl-only">Gemiddeld 12 dagen sneller betaald</span><span class="en-only">Paid an average 12 days sooner</span></li>
-                <li><span class="nl-only">Human-in-the-loop bij juridisch stadium</span><span class="en-only">Human-in-the-loop at legal stage</span></li>
+                <li><span class="nl-only">Websites & landingspagina's</span><span class="en-only">Websites & landing pages</span></li>
+                <li><span class="nl-only">Maatwerk webapplicaties</span><span class="en-only">Custom web applications</span></li>
+                <li><span class="nl-only">Snel, responsive & SEO-klaar</span><span class="en-only">Fast, responsive & SEO-ready</span></li>
+                <li><span class="nl-only">Scherpe, concurrerende projectprijs</span><span class="en-only">Sharp, competitive project pricing</span></li>
+                <li><span class="nl-only">Onderhoud & hosting mogelijk</span><span class="en-only">Maintenance & hosting available</span></li>
               </ul>
             </div>
             <div class="pt-card">
               <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
-              <p class="pt-price-big">€3.000–5.000</p>
-              <p class="pt-price-note"><span class="nl-only">eenmalige setup</span><span class="en-only">one-time setup</span></p>
-              <p class="pt-price-mo">€300–500<span style="font-size:14px;opacity:0.55;">/<span class="nl-only">maand</span><span class="en-only">month</span></span></p>
-              <p class="pt-price-note"><span class="nl-only">support & updates inbegrepen</span><span class="en-only">support & updates included</span></p>
-              <a href="#contact" class="pt-btn nl-only">Interesse? Plan een intake →</a>
-              <a href="#contact" class="pt-btn en-only">Interested? Book a call →</a>
+              <p class="pt-price-big"><span class="nl-only">Op maat</span><span class="en-only">Custom</span></p>
+              <p class="pt-price-note"><span class="nl-only">scherpe projectprijs — offerte binnen 48u</span><span class="en-only">competitive project pricing — quote within 48h</span></p>
+              <a href="#contact" class="pt-btn nl-only">Vraag een offerte →</a>
+              <a href="#contact" class="pt-btn en-only">Request a quote →</a>
             </div>
           </div>
         </div>
 
-        <!-- Geo -->
+        <!-- GEO -->
         <div class="pt-panel" id="panel-geo" role="tabpanel" aria-labelledby="tab-geo" hidden>
           <div class="pt-panel-body reveal">
             <div>
               <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
-                <span class="nl-only">Lokale leadgeneratie</span>
-                <span class="en-only">Local lead generation</span>
+                <span class="nl-only">Gevonden worden in AI</span>
+                <span class="en-only">Get found in AI</span>
               </h3>
               <p class="pt-desc">
-                <span class="nl-only">Cadans Geo vindt actief nieuwe klanten in jouw postcodegebied via Google Maps, LinkedIn en brancheregisters. Hete leads direct in je WhatsApp.</span>
-                <span class="en-only">Cadans Geo actively finds new customers in your postal code area via Google Maps, LinkedIn, and industry registers. Hot leads directly in your WhatsApp.</span>
+                <span class="nl-only">Steeds meer klanten zoeken via ChatGPT, Gemini en Google's AI-overzichten. Met GEO — Generative Engine Optimization — vergroten we de vindbaarheid van jouw bedrijf in die LLM's, zodat je genoemd én aanbevolen wordt.</span>
+                <span class="en-only">More and more customers search via ChatGPT, Gemini and Google's AI overviews. With GEO — Generative Engine Optimization — we grow your business's visibility inside those LLMs, so you get named and recommended.</span>
               </p>
               <ul class="pt-list">
-                <li><span class="nl-only">Automatisch prospecten in je regio</span><span class="en-only">Automatically prospect in your region</span></li>
-                <li><span class="nl-only">LinkedIn + Google Maps scraping</span><span class="en-only">LinkedIn + Google Maps scraping</span></li>
-                <li><span class="nl-only">Gepersonaliseerde eerste contact</span><span class="en-only">Personalized first contact</span></li>
-                <li><span class="nl-only">Rapportage van conversieratio's</span><span class="en-only">Conversion rate reporting</span></li>
-                <li><span class="nl-only">GDPR-compliant</span><span class="en-only">GDPR compliant</span></li>
+                <li><span class="nl-only">Zichtbaar in ChatGPT, Gemini & AI-zoek</span><span class="en-only">Visible in ChatGPT, Gemini & AI search</span></li>
+                <li><span class="nl-only">Content die AI-modellen citeren</span><span class="en-only">Content that AI models cite</span></li>
+                <li><span class="nl-only">Gestructureerde data & vermeldingen</span><span class="en-only">Structured data & citations</span></li>
+                <li><span class="nl-only">Meting van je AI-zichtbaarheid</span><span class="en-only">Measurement of your AI visibility</span></li>
+                <li><span class="nl-only">Doorlopende optimalisatie</span><span class="en-only">Continuous optimization</span></li>
               </ul>
             </div>
             <div class="pt-card">
               <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
-              <p class="pt-price-big">€3.500–6.000</p>
-              <p class="pt-price-note"><span class="nl-only">eenmalige setup</span><span class="en-only">one-time setup</span></p>
-              <p class="pt-price-mo">€400–600<span style="font-size:14px;opacity:0.55;">/<span class="nl-only">maand</span><span class="en-only">month</span></span></p>
-              <p class="pt-price-note"><span class="nl-only">support & updates inbegrepen</span><span class="en-only">support & updates included</span></p>
-              <a href="#contact" class="pt-btn nl-only">Meer informatie →</a>
-              <a href="#contact" class="pt-btn en-only">More information →</a>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je markt & concurrentie</span><span class="en-only">depends on your market & competition</span></p>
+              <a href="#contact" class="pt-btn nl-only">Check je AI-vindbaarheid →</a>
+              <a href="#contact" class="pt-btn en-only">Check your AI visibility →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice -->
+        <div class="pt-panel" id="panel-voice" role="tabpanel" aria-labelledby="tab-voice" hidden>
+          <div class="pt-panel-body reveal">
+            <div>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Voice-assistent voor reserveringen</span>
+                <span class="en-only">Voice assistant for bookings</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">Een AI-voicebot die de telefoon 24/7 opneemt, reserveringen aanneemt en vragen beantwoordt. Zo loop je nooit meer een reservering mis — en dus geen klant.</span>
+                <span class="en-only">An AI voice bot that answers the phone 24/7, takes bookings and answers questions. So you never miss a reservation again — and never a customer.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Neemt de telefoon 24/7 op</span><span class="en-only">Answers the phone 24/7</span></li>
+                <li><span class="nl-only">Reserveringen direct ingepland</span><span class="en-only">Bookings scheduled instantly</span></li>
+                <li><span class="nl-only">Beantwoordt veelgestelde vragen</span><span class="en-only">Answers common questions</span></li>
+                <li><span class="nl-only">Nooit meer een gemiste oproep</span><span class="en-only">Never miss a call again</span></li>
+                <li><span class="nl-only">Koppeling met je agenda</span><span class="en-only">Connects to your calendar</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je belvolume</span><span class="en-only">depends on your call volume</span></p>
+              <a href="#contact" class="pt-btn nl-only">Plan een demo →</a>
+              <a href="#contact" class="pt-btn en-only">Book a demo →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="pt-panel" id="panel-automation" role="tabpanel" aria-labelledby="tab-automation" hidden>
+          <div class="pt-panel-body reveal">
+            <div>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Workflow-automatisering</span>
+                <span class="en-only">Workflow automation</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">Automatiseer repetitieve, monotone taken — van gegevens overtypen tot rapportages en koppelingen tussen je tools. Jij houdt tijd over voor het werk dat telt.</span>
+                <span class="en-only">Automate repetitive, monotonous tasks — from re-typing data to reports and connecting your tools. You free up time for the work that matters.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Automatiseer repetitieve taken</span><span class="en-only">Automate repetitive tasks</span></li>
+                <li><span class="nl-only">Koppel je tools aan elkaar</span><span class="en-only">Connect your tools together</span></li>
+                <li><span class="nl-only">Automatische rapportages</span><span class="en-only">Automated reporting</span></li>
+                <li><span class="nl-only">Minder fouten, meer tempo</span><span class="en-only">Fewer errors, more speed</span></li>
+                <li><span class="nl-only">Op maat voor jouw proces</span><span class="en-only">Tailored to your process</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je processen</span><span class="en-only">depends on your processes</span></p>
+              <a href="#contact" class="pt-btn nl-only">Bespreek je workflow →</a>
+              <a href="#contact" class="pt-btn en-only">Discuss your workflow →</a>
             </div>
           </div>
         </div>
@@ -1357,9 +1431,11 @@
             <label for="f-interest"><span class="nl-only">Interesseert mij</span><span class="en-only">I'm interested in</span></label>
             <select id="f-interest" name="interest" required>
               <option value="" disabled selected></option>
-              <option value="pa" data-nl="Cadans PA: WhatsApp AI-assistent" data-en="Cadans PA: WhatsApp AI assistant">Cadans PA: WhatsApp AI-assistent</option>
-              <option value="collect" data-nl="Cadans Collect: Debiteurenbeheer" data-en="Cadans Collect: Accounts receivable">Cadans Collect: Debiteurenbeheer</option>
-              <option value="geo" data-nl="Cadans Geo: Lokale leadgeneratie" data-en="Cadans Geo: Local lead generation">Cadans Geo: Lokale leadgeneratie</option>
+              <option value="pa" data-nl="WhatsApp PA: AI-assistent" data-en="WhatsApp PA: AI assistant">WhatsApp PA: AI-assistent</option>
+              <option value="webdev" data-nl="Website of webapplicatie" data-en="Website or web app">Website of webapplicatie</option>
+              <option value="geo" data-nl="GEO: vindbaarheid in AI" data-en="GEO: findability in AI">GEO: vindbaarheid in AI</option>
+              <option value="voice" data-nl="Voice-assistent voor reserveringen" data-en="Voice assistant for bookings">Voice-assistent voor reserveringen</option>
+              <option value="automation" data-nl="Workflow-automatisering" data-en="Workflow automation">Workflow-automatisering</option>
               <option value="unknown" data-nl="Weet ik nog niet" data-en="Not sure yet">Weet ik nog niet</option>
             </select>
           </div>
@@ -1407,6 +1483,7 @@
     </div>
   </footer>
 
+  <script src="hero-net.js"></script>
   <script src="home.js"></script>
   <script src="lang.js"></script>
 </body>
