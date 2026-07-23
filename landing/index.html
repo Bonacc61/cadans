@@ -681,6 +681,22 @@
     }
     .pt-btn:hover { background: var(--indigo-dk); }
 
+    .pt-guarantee {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 12.5px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--teal);
+      background: rgba(13,148,136,0.10);
+      border: 1px solid rgba(13,148,136,0.28);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 18px;
+    }
+    .pt-guarantee svg { flex-shrink: 0; margin-top: 1px; }
+
     /* ── Stats grid ── */
     .stats-band {
       border-top: 1px solid var(--border);
@@ -1236,6 +1252,10 @@
               <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
               <p class="pt-price-big"><span class="nl-only">Op maat</span><span class="en-only">Custom</span></p>
               <p class="pt-price-note"><span class="nl-only">scherpe projectprijs — offerte binnen 48u</span><span class="en-only">competitive project pricing — quote within 48h</span></p>
+              <p class="pt-guarantee">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span><span class="nl-only">Niet tevreden na het prototype? Dan betaal je niets.</span><span class="en-only">Not satisfied after the prototype? Then you pay nothing.</span></span>
+              </p>
               <a href="#contact" class="pt-btn nl-only">Vraag een offerte →</a>
               <a href="#contact" class="pt-btn en-only">Request a quote →</a>
             </div>
