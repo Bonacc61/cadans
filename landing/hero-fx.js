@@ -1,10 +1,10 @@
 'use strict';
 
-/* Magnetic neural grid — a canvas lattice of nodes on a home grid. Each node springs
-   back to home but is pushed aside by a cursor repulsion field, so the mesh bends and
-   ripples around the pointer; the mesh lines + nodes light up indigo→teal near the
-   cursor. A slow idle "breathing" keeps it alive at rest. Pure canvas, no deps.
-   Reduced-motion → one static frame; pauses when off-screen or the tab is hidden. */
+/* Interactive neural sphere — a rotating lattice of nodes on a Fibonacci sphere,
+   wired to nearest neighbours. It auto-spins and tilts toward the cursor (parallax);
+   nodes + links are depth-shaded indigo→teal so the globe reads as 3D on the light
+   canvas. Pure canvas, no deps. Reduced-motion → one static frame; pauses off-screen
+   or when the tab is hidden. */
 (function () {
   const canvas = document.querySelector('.hero-fx');
   const hero = document.querySelector('.hero');
@@ -12,18 +12,41 @@
   const ctx = canvas.getContext('2d');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  const INK = [15, 23, 42];
   const INDIGO = [79, 70, 229];
   const TEAL = [13, 148, 136];
-  const GAP = 34;      // grid spacing (px)
-  const REPEL = 135;   // cursor influence radius (px)
-  const FORCE = 30;    // max node displacement (px)
+  const N = 700;          // node count
+  const K = 3;            // links per node (nearest neighbours)
+  const PERSP = 2.4;      // perspective strength
 
-  let W = 0, H = 0, DPR = 1, cols = 0, rows = 0, pts = [], raf = 0, t = 0;
-  const ptr = { x: -9999, y: -9999, active: false };
+  let W = 0, H = 0, DPR = 1, cx = 0, cy = 0, R = 0, raf = 0;
+  const nodes = [];       // unit-sphere coords
+  const edges = [];       // [i, j] neighbour pairs
+  let rotY = 0, rotX = -0.32;
+  const tilt = { x: 0, y: 0 }, target = { x: 0, y: 0 };
 
-  const lerp = (a, b, k) => a + (b - a) * k;
-  const mix = (a, b, k) => `rgba(${lerp(a[0], b[0], k) | 0},${lerp(a[1], b[1], k) | 0},${lerp(a[2], b[2], k) | 0}`;
+  const mixc = (a, b, k) =>
+    `${(a[0] + (b[0] - a[0]) * k) | 0},${(a[1] + (b[1] - a[1]) * k) | 0},${(a[2] + (b[2] - a[2]) * k) | 0}`;
+
+  function build() {
+    nodes.length = 0; edges.length = 0;
+    const gold = Math.PI * (3 - Math.sqrt(5));
+    for (let i = 0; i < N; i++) {
+      const y = 1 - (i / (N - 1)) * 2;
+      const r = Math.sqrt(1 - y * y);
+      const th = gold * i;
+      nodes.push({ x: Math.cos(th) * r, y, z: Math.sin(th) * r });
+    }
+    // nearest-neighbour links (O(n²) once — fine for n≈700)
+    for (let i = 0; i < N; i++) {
+      const a = nodes[i]; const ds = [];
+      for (let j = 0; j < N; j++) {
+        if (i === j) continue; const b = nodes[j];
+        ds.push([(a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2, j]);
+      }
+      ds.sort((p, q) => p[0] - q[0]);
+      for (let k = 0; k < K; k++) { const j = ds[k][1]; if (j > i) edges.push([i, j]); }
+    }
+  }
 
   function size() {
     const r = hero.getBoundingClientRect();
@@ -32,99 +55,70 @@
     canvas.width = Math.round(W * DPR);
     canvas.height = Math.round(H * DPR);
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    build();
+    cx = W > 760 ? W * 0.7 : W * 0.5;      // offset right on desktop, centred on mobile
+    cy = H * 0.48;
+    R = Math.min(W * 0.42, H * 0.4);
   }
 
-  function build() {
-    cols = Math.ceil(W / GAP) + 2;
-    rows = Math.ceil(H / GAP) + 2;
-    pts = new Array(cols * rows);
-    for (let j = 0; j < rows; j++) {
-      for (let i = 0; i < cols; i++) {
-        const hx = i * GAP, hy = j * GAP;
-        pts[j * cols + i] = { hx, hy, x: hx, y: hy, ph: (i + j) * 0.55, cr: 0 };
-      }
+  const P = [];
+  function frame() {
+    tilt.x += (target.x - tilt.x) * 0.05;
+    tilt.y += (target.y - tilt.y) * 0.05;
+    rotY += 0.0016;                         // gentle auto-spin
+    const rx = rotX + tilt.x, ry = rotY + tilt.y;
+    const cosY = Math.cos(ry), sinY = Math.sin(ry), cosX = Math.cos(rx), sinX = Math.sin(rx);
+
+    for (let i = 0; i < N; i++) {
+      const p = nodes[i];
+      const x1 = p.x * cosY - p.z * sinY;
+      const z1 = p.x * sinY + p.z * cosY;
+      const y1 = p.y * cosX - z1 * sinX;
+      const z2 = p.y * sinX + z1 * cosX;    // -1..1
+      const s = PERSP / (PERSP - z2);
+      P[i] = { sx: cx + x1 * R * s, sy: cy + y1 * R * s, z: z2, f: (z2 + 1) / 2 };
     }
-  }
 
-  function step() {
-    t += 0.016;
-    for (const p of pts) {
-      const bx = Math.sin(t * 0.6 + p.ph) * 1.2;
-      const by = Math.cos(t * 0.5 + p.ph) * 1.2;
-      let tx = p.hx + bx, ty = p.hy + by;
-      let cr = 0;
-      if (ptr.active) {
-        const dx = p.hx - ptr.x, dy = p.hy - ptr.y;
-        const d = Math.hypot(dx, dy);
-        if (d < REPEL) {
-          const f = 1 - d / REPEL;               // 0..1, strongest at cursor
-          const e = f * f;                        // ease the falloff
-          tx += (dx / (d || 1)) * e * FORCE;
-          ty += (dy / (d || 1)) * e * FORCE;
-          cr = f;
-        }
-      }
-      p.x += (tx - p.x) * 0.16;
-      p.y += (ty - p.y) * 0.16;
-      p.cr = cr;
-    }
-  }
-
-  function draw() {
     ctx.clearRect(0, 0, W, H);
-    // mesh lines (to right + down neighbour) — faint base, brighter near cursor
+    // links
     ctx.lineWidth = 1;
-    for (let j = 0; j < rows; j++) {
-      for (let i = 0; i < cols; i++) {
-        const p = pts[j * cols + i];
-        if (i < cols - 1) link(p, pts[j * cols + i + 1]);
-        if (j < rows - 1) link(p, pts[(j + 1) * cols + i]);
-      }
+    for (let e = 0; e < edges.length; e++) {
+      const a = P[edges[e][0]], b = P[edges[e][1]];
+      const f = (a.f + b.f) / 2;
+      ctx.strokeStyle = `rgba(${mixc(INDIGO, TEAL, f)},${0.04 + f * 0.22})`;
+      ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
     }
-    // nodes
-    for (const p of pts) {
-      const c = p.cr;
-      const col = c > 0 ? mix(INK, c < 0.5 ? INDIGO : TEAL, c) : `rgba(${INK[0]},${INK[1]},${INK[2]}`;
-      ctx.fillStyle = `${col},${0.14 + c * 0.6})`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.2 + c * 1.8, 0, 6.2832);
-      ctx.fill();
+    // nodes, back-to-front
+    const order = P.map((_, i) => i).sort((i, j) => P[i].z - P[j].z);
+    for (const i of order) {
+      const p = P[i];
+      ctx.fillStyle = `rgba(${mixc(INDIGO, TEAL, p.f)},${0.2 + p.f * 0.7})`;
+      ctx.beginPath(); ctx.arc(p.sx, p.sy, 0.7 + p.f * 2.1, 0, 6.2832); ctx.fill();
     }
+    raf = requestAnimationFrame(frame);
   }
 
-  function link(a, b) {
-    const c = Math.max(a.cr, b.cr);
-    const alpha = 0.05 + c * 0.5;
-    ctx.strokeStyle = `${mix(INK, INDIGO, c)},${alpha})`;
-    ctx.beginPath();
-    ctx.moveTo(a.x, a.y);
-    ctx.lineTo(b.x, b.y);
-    ctx.stroke();
-  }
-
-  function loop() { step(); draw(); raf = requestAnimationFrame(loop); }
-  function start() { if (!raf && !reduce.matches) raf = requestAnimationFrame(loop); }
+  function drawStatic() { rotY = 0.6; frame(); stop(); }
+  function start() { if (!raf && !reduce.matches) raf = requestAnimationFrame(frame); }
   function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
 
-  hero.addEventListener('pointermove', (e) => {
+  hero.addEventListener('pointermove', (ev) => {
     const r = hero.getBoundingClientRect();
-    ptr.x = e.clientX - r.left;
-    ptr.y = e.clientY - r.top;
-    ptr.active = true;
+    target.y = ((ev.clientX - r.left - cx) / W) * 1.4;
+    target.x = ((ev.clientY - r.top - cy) / H) * -1.0;
   });
-  hero.addEventListener('pointerleave', () => { ptr.active = false; });
+  hero.addEventListener('pointerleave', () => { target.x = 0; target.y = 0; });
 
   let rt = 0;
   window.addEventListener('resize', () => {
     clearTimeout(rt);
-    rt = setTimeout(() => { size(); if (reduce.matches) draw(); }, 200);
+    rt = setTimeout(() => { size(); if (reduce.matches) drawStatic(); }, 200);
   });
   document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver((es) => es.forEach((en) => (en.isIntersecting ? start() : stop())), { threshold: 0 }).observe(canvas);
   }
 
+  build();
   size();
-  if (reduce.matches) draw(); else start();
+  if (reduce.matches) drawStatic(); else start();
 })();

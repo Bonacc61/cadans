@@ -175,11 +175,11 @@
       margin: 0 auto;
       padding: 72px 28px 64px;
       display: grid;
-      grid-template-columns: 1fr 380px;
+      grid-template-columns: 1fr;
       gap: 60px;
       align-items: center;
       min-height: calc(90vh - var(--nav-h));
-      background: var(--canvas);
+      background: radial-gradient(1100px 780px at 72% 42%, #ffffff 0%, #f5f2ec 66%, #efece4 100%);
       isolation: isolate;
     }
 
@@ -195,8 +195,7 @@
       z-index: 0;
       pointer-events: none;
     }
-    .hero > .hero-content,
-    .hero > .chat-card { position: relative; z-index: 1; }
+    .hero > .hero-content { position: relative; z-index: 1; max-width: 600px; }
 
     .hero-eyebrow {
       font-family: var(--f-mono);
@@ -1081,26 +1080,6 @@
         </div>
       </div>
 
-      <!-- WhatsApp demo card -->
-      <div class="chat-card" role="img" aria-label="Cadans PA live demonstratie">
-        <div class="chat-head">
-          <div class="chat-av">c</div>
-          <div>
-            <div class="chat-name">Cadans PA</div>
-            <div class="chat-status">
-              <span class="nl-only">online · reageert direct</span>
-              <span class="en-only">online · responds instantly</span>
-            </div>
-          </div>
-        </div>
-        <div class="chat-body" id="hero-chat" aria-live="polite"></div>
-        <div class="chat-foot">
-          <div class="chat-input-fake">
-            <span class="nl-only">Typ een bericht…</span>
-            <span class="en-only">Type a message…</span>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- ── TICKER ── -->
