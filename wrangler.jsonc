@@ -1,0 +1,16 @@
+{
+  // Serves the static landing site from Cloudflare Workers.
+  //
+  // There is no build step and no Worker script — `assets.directory` alone
+  // makes this a static-asset deployment. The name here is authoritative:
+  // `wrangler deploy` uses it regardless of what the dashboard shows, so it
+  // must match the project you created.
+  //
+  // Only `landing/` is published. Pointing this at the repo root would upload
+  // agent configs, strategy docs and client notes to a public URL.
+  "name": "cadans-site",
+  "compatibility_date": "2026-08-04",
+  "assets": {
+    "directory": "./landing"
+  }
+}
