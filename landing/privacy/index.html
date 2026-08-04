@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacybeleid — Cadans</title>
+  <meta name="description" content="Hoe Cadans omgaat met persoonsgegevens uit het intakeformulier: welke gegevens, met welke grondslag, hoe lang bewaard en welke rechten je hebt." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://cadans.ai/privacy" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Design tokens (mirrors the homepage) ── */
+    :root {
+      --canvas:       #F6F4F0;
+      --canvas-white: #FFFFFF;
+      --ink:          #111111;
+      --ink-mid:      #555250;
+      --ink-faint:    #AAA7A2;
+      --border:       #E2DDD8;
+      --indigo:       #4F46E5;
+      --indigo-dk:    #3730A3;
+      --amber:        #F59E0B;
+
+      --f-disp: 'Space Grotesk', sans-serif;
+      --f-body: 'Instrument Sans', sans-serif;
+
+      --nav-h: 62px;
+      --max-w: 760px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--f-body);
+      background: var(--canvas);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      height: var(--nav-h);
+      background: rgba(246,244,240,0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1180px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; align-items: center;
+    }
+    .nav-logo {
+      font-family: var(--f-disp); font-size: 21px; font-weight: 700;
+      color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-actions { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+    .lang-btn {
+      font-family: var(--f-body); font-size: 12.5px; font-weight: 600;
+      background: none; border: 1.5px solid var(--border); border-radius: 7px;
+      padding: 5px 10px; color: var(--ink-mid); cursor: pointer;
+      transition: border-color 140ms, color 140ms;
+    }
+    .lang-btn:hover { border-color: var(--indigo); color: var(--indigo); }
+    .nav-back {
+      font-size: 13.5px; color: var(--ink-mid); text-decoration: none;
+      transition: color 140ms;
+    }
+    .nav-back:hover { color: var(--indigo); }
+
+    /* ── Document ── */
+    .doc { max-width: var(--max-w); margin: 0 auto; padding: 64px 28px 88px; }
+
+    .doc h1 {
+      font-family: var(--f-disp); font-size: clamp(30px, 5vw, 40px);
+      font-weight: 700; letter-spacing: -0.025em; line-height: 1.12;
+    }
+    .doc-meta {
+      margin-top: 12px; font-size: 13.5px; color: var(--ink-faint);
+    }
+    .doc-intro {
+      margin-top: 24px; font-size: 17px; line-height: 1.65; color: var(--ink-mid);
+    }
+
+    .doc h2 {
+      font-family: var(--f-disp); font-size: 20px; font-weight: 600;
+      letter-spacing: -0.015em; margin-top: 44px; padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .doc h3 {
+      font-family: var(--f-disp); font-size: 15.5px; font-weight: 600;
+      margin-top: 24px;
+    }
+    .doc p { margin-top: 12px; font-size: 15.5px; line-height: 1.7; color: var(--ink-mid); }
+    .doc ul { margin-top: 12px; padding-left: 20px; }
+    .doc li { font-size: 15.5px; line-height: 1.7; color: var(--ink-mid); margin-top: 6px; }
+    .doc a { color: var(--indigo); text-underline-offset: 2px; }
+    .doc strong { color: var(--ink); font-weight: 600; }
+
+    table {
+      width: 100%; margin-top: 16px; border-collapse: collapse;
+      font-size: 14.5px;
+    }
+    th, td {
+      text-align: left; padding: 10px 12px;
+      border: 1px solid var(--border); vertical-align: top;
+      line-height: 1.6; color: var(--ink-mid);
+    }
+    th { background: var(--canvas-white); color: var(--ink); font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
+
+    .todo {
+      background: #FFFBEB; border: 1px solid #FDE68A; border-left: 3px solid var(--amber);
+      border-radius: 8px; padding: 12px 14px; margin-top: 16px;
+      font-size: 14px; line-height: 1.6; color: #78350F;
+    }
+    .todo strong { color: #78350F; }
+
+    /* ── Footer ── */
+    .footer-strip { border-top: 1px solid var(--border); background: var(--canvas-white); }
+    .footer-inner {
+      max-width: 1180px; margin: 0 auto; padding: 28px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-logo { font-family: var(--f-disp); font-size: 17px; font-weight: 700; }
+    .footer-links { display: flex; gap: 20px; list-style: none; margin-left: auto; }
+    .footer-links a { font-size: 12.5px; color: var(--ink-mid); text-decoration: none; }
+    .footer-links a:hover { color: var(--indigo); }
+    .footer-copy { font-size: 12.5px; color: var(--ink-faint); }
+
+    /* ── Language toggle ── */
+    .en-only { display: none; }
+    html.lang-en .nl-only { display: none !important; }
+    html.lang-en .en-only { display: revert; }
+    html.lang-en span.en-only,
+    html.lang-en a.en-only { display: inline; }
+    html.lang-en li.en-only { display: list-item; }
+
+    @media (max-width: 560px) {
+      .doc { padding: 44px 22px 64px; }
+      .footer-links { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <div class="nav">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo" aria-label="cadans. home">cadans.</a>
+        <div class="nav-actions">
+          <a href="/" class="nav-back">
+            <span class="nl-only">← Terug naar home</span>
+            <span class="en-only">← Back to home</span>
+          </a>
+          <button class="lang-btn" id="lang-btn" aria-label="Switch to English">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc">
+
+    <h1>
+      <span class="nl-only">Privacybeleid</span>
+      <span class="en-only">Privacy policy</span>
+    </h1>
+    <p class="doc-meta">
+      <span class="nl-only">Laatst bijgewerkt: 4 augustus 2026</span>
+      <span class="en-only">Last updated: 4 August 2026</span>
+    </p>
+
+    <p class="doc-intro">
+      <span class="nl-only">Cadans verwerkt persoonsgegevens van bezoekers die het intakeformulier invullen. Dit beleid legt uit welke gegevens dat zijn, waarom we ze nodig hebben, op welke juridische grondslag we ze verwerken, hoe lang we ze bewaren en welke rechten je hebt. We houden het kort en concreet — geen juridische mist.</span>
+      <span class="en-only">Cadans processes personal data of visitors who submit the intake form. This policy explains which data that is, why we need it, the legal basis we rely on, how long we keep it and what rights you have. Kept short and concrete — no legal fog.</span>
+    </p>
+
+    <!-- 1. CONTROLLER -->
+    <h2>
+      <span class="nl-only">1. Wie is verantwoordelijk</span>
+      <span class="en-only">1. Who is responsible</span>
+    </h2>
+    <p>
+      <span class="nl-only">De verwerkingsverantwoordelijke voor de gegevens die je via deze site achterlaat is:</span>
+      <span class="en-only">The data controller for the information you submit through this site is:</span>
+    </p>
+    <ul>
+      <li><strong>[TODO: juridische naam / legal entity name]</strong></li>
+      <li><span class="nl-only">Adres:</span><span class="en-only">Address:</span> [TODO: vestigingsadres / registered address]</li>
+      <li>KvK: [TODO: KvK-nummer / Chamber of Commerce number]</li>
+      <li><span class="nl-only">E-mail:</span><span class="en-only">Email:</span> <a href="mailto:jan@cadans.ai">jan@cadans.ai</a></li>
+    </ul>
+    <div class="todo">
+      <strong>TODO vóór livegang —</strong>
+      <span class="nl-only">vul de juridische naam, het vestigingsadres en het KvK-nummer hierboven in, en werk de KvK-regel in de footer van de homepage bij. Een privacybeleid met een niet-bestaand KvK-nummer is slechter dan geen beleid. Cadans heeft (nog) geen functionaris gegevensbescherming; dat is bij deze omvang niet verplicht.</span>
+      <span class="en-only">fill in the legal name, registered address and Chamber of Commerce number above, and update the KvK line in the homepage footer. A privacy policy citing a non-existent registration number is worse than none. Cadans has no Data Protection Officer, which is not required at this scale.</span>
+    </div>
+
+    <!-- 2. WHAT WE COLLECT -->
+    <h2>
+      <span class="nl-only">2. Welke gegevens we verzamelen</span>
+      <span class="en-only">2. What we collect</span>
+    </h2>
+    <p>
+      <span class="nl-only">Alleen wat je zelf in het intakeformulier invult. We kopen geen gegevens in en we verrijken je invoer niet met externe bronnen.</span>
+      <span class="en-only">Only what you type into the intake form yourself. We do not buy data and we do not enrich your submission from external sources.</span>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="nl-only">Gegeven</span><span class="en-only">Data</span></th>
+            <th><span class="nl-only">Verplicht?</span><span class="en-only">Required?</span></th>
+            <th><span class="nl-only">Waarvoor</span><span class="en-only">Used for</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="nl-only">Naam</span><span class="en-only">Name</span></td>
+            <td><span class="nl-only">Ja</span><span class="en-only">Yes</span></td>
+            <td><span class="nl-only">Je persoonlijk aanspreken in het antwoord</span><span class="en-only">Addressing you properly in our reply</span></td>
+          </tr>
+          <tr>
+            <td><span class="nl-only">E-mailadres</span><span class="en-only">Email address</span></td>
+            <td><span class="nl-only">Ja</span><span class="en-only">Yes</span></td>
+            <td><span class="nl-only">Reageren op je aanvraag</span><span class="en-only">Replying to your request</span></td>
+          </tr>
+          <tr>
+            <td><span class="nl-only">Interesse (keuzelijst)</span><span class="en-only">Interest (dropdown)</span></td>
+            <td><span class="nl-only">Ja</span><span class="en-only">Yes</span></td>
+            <td><span class="nl-only">Het intakegesprek voorbereiden</span><span class="en-only">Preparing the intake call</span></td>
+          </tr>
+          <tr>
+            <td><span class="nl-only">Telefoonnummer</span><span class="en-only">Phone number</span></td>
+            <td><span class="nl-only">Nee</span><span class="en-only">No</span></td>
+            <td><span class="nl-only">Bellen als je dat prettiger vindt dan mailen</span><span class="en-only">Calling you if you prefer that over email</span></td>
+          </tr>
+          <tr>
+            <td><span class="nl-only">Bedrijf &amp; branche</span><span class="en-only">Company &amp; sector</span></td>
+            <td><span class="nl-only">Nee</span><span class="en-only">No</span></td>
+            <td><span class="nl-only">Context over je situatie</span><span class="en-only">Context about your situation</span></td>
+          </tr>
+          <tr>
+            <td><span class="nl-only">Vrij tekstveld</span><span class="en-only">Free-text message</span></td>
+            <td><span class="nl-only">Nee</span><span class="en-only">No</span></td>
+            <td><span class="nl-only">Je eigen toelichting</span><span class="en-only">Whatever you want to tell us</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <span class="nl-only">Het vrije tekstveld is vrije invoer: zet er geen bijzondere persoonsgegevens in (gezondheid, religie, strafrechtelijk verleden) en geen gegevens van derden die daar niet van weten. We vragen daar niet om en hebben ze niet nodig.</span>
+      <span class="en-only">The free-text field is open input: please do not enter special-category data (health, religion, criminal history) or details about third parties who are unaware of it. We do not ask for it and do not need it.</span>
+    </p>
+
+    <!-- 3. LEGAL BASIS -->
+    <h2>
+      <span class="nl-only">3. Grondslag en doel</span>
+      <span class="en-only">3. Legal basis and purpose</span>
+    </h2>
+    <p>
+      <span class="nl-only">We verwerken je gegevens op grond van <strong>artikel 6 lid 1 sub a AVG (toestemming)</strong>: je vinkt het vakje bij het formulier zelf aan. Het doel is één ding — contact met je opnemen over jouw aanvraag en, als je dat wilt, een gratis intakegesprek inplannen.</span>
+      <span class="en-only">We process your data under <strong>Article 6(1)(a) GDPR (consent)</strong>: you tick the box on the form yourself. The purpose is one thing — contacting you about your request and, if you want, scheduling a free intake call.</span>
+    </p>
+    <p>
+      <span class="nl-only">We gebruiken je gegevens <strong>niet</strong> voor nieuwsbrieven, profilering, geautomatiseerde besluitvorming of doorverkoop aan derden. Wil je later toch onze updates ontvangen, dan vragen we daar apart toestemming voor.</span>
+      <span class="en-only">We do <strong>not</strong> use your data for newsletters, profiling, automated decision-making or resale to third parties. If you later want our updates, we will ask for separate consent.</span>
+    </p>
+
+    <!-- 4. RETENTION -->
+    <h2>
+      <span class="nl-only">4. Hoe lang we het bewaren</span>
+      <span class="en-only">4. How long we keep it</span>
+    </h2>
+    <p>
+      <span class="nl-only">Je aanvraag wordt opgeslagen in onze database, die draait op servers in Frankfurt (Duitsland). Die opslag verlaat de EU niet. Zodra we je antwoorden verloopt dat contact per e-mail, en die e-mail komt ook terecht in een door Google gehoste mailbox — zie hoofdstuk 5.</span>
+      <span class="en-only">Your request is stored in our database, which runs on servers in Frankfurt, Germany. That storage does not leave the EU. Once we reply, the conversation continues over email, and that email also ends up in a Google-hosted mailbox — see section 5 for what that means.</span>
+    </p>
+    <ul>
+      <li>
+        <span class="nl-only"><strong>In de database:</strong> je aanvraag wordt uiterlijk 12 maanden na indiening verwijderd.</span>
+        <span class="en-only"><strong>In the database:</strong> your submission is deleted no later than 12 months after you send it.</span>
+      </li>
+      <li>
+        <span class="nl-only"><strong>Word je geen klant:</strong> we verwijderen ook de e-mailcorrespondentie uiterlijk 12 maanden na het laatste contact.</span>
+        <span class="en-only"><strong>If you do not become a client:</strong> we delete the email correspondence too, no later than 12 months after our last contact.</span>
+      </li>
+      <li>
+        <span class="nl-only"><strong>Word je wel klant:</strong> dan gaan je gegevens over naar de klantadministratie en gelden de bewaartermijnen uit de overeenkomst en de fiscale bewaarplicht (7 jaar voor de administratie).</span>
+        <span class="en-only"><strong>If you do become a client:</strong> your details move into client administration, governed by the contract's retention terms and Dutch tax law (7 years for accounting records).</span>
+      </li>
+    </ul>
+
+    <!-- 5. RECIPIENTS -->
+    <h2>
+      <span class="nl-only">5. Wie je gegevens nog meer ziet</span>
+      <span class="en-only">5. Who else sees your data</span>
+    </h2>
+    <p>
+      <span class="nl-only">Om de site te draaien en de e-mail te bezorgen gebruiken we een paar dienstverleners. Zij verwerken je gegevens alleen in onze opdracht:</span>
+      <span class="en-only">Running the site and delivering the email involves a few service providers. They process your data only on our instructions:</span>
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="nl-only">Dienst</span><span class="en-only">Provider</span></th>
+            <th><span class="nl-only">Rol</span><span class="en-only">Role</span></th>
+            <th><span class="nl-only">Locatie</span><span class="en-only">Location</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cloudflare</td>
+            <td><span class="nl-only">Hosting van de website. Je formulierinzending gaat rechtstreeks naar de database en komt niet langs Cloudflare.</span><span class="en-only">Hosting the website. Your form submission goes straight to the database and does not pass through Cloudflare.</span></td>
+            <td><span class="nl-only">VS / wereldwijd netwerk</span><span class="en-only">US / global network</span></td>
+          </tr>
+          <tr>
+            <td>Supabase</td>
+            <td><span class="nl-only">Database waarin je aanvraag wordt opgeslagen</span><span class="en-only">Database storing your submission</span></td>
+            <td><span class="nl-only">Frankfurt, Duitsland (EU)</span><span class="en-only">Frankfurt, Germany (EU)</span></td>
+          </tr>
+          <tr>
+            <td>Migadu</td>
+            <td><span class="nl-only">Ontvangt en verstuurt onze e-mail op het adres jan@cadans.ai</span><span class="en-only">Receives and sends our email at jan@cadans.ai</span></td>
+            <td><span class="nl-only">Zwitserland (adequaatheidsbesluit EC)</span><span class="en-only">Switzerland (EC adequacy decision)</span></td>
+          </tr>
+          <tr>
+            <td>Google (Gmail)</td>
+            <td><span class="nl-only">Onze mailbox op jan@cadans.ai wordt doorgestuurd naar Gmail. Alles wat je ons mailt — en de inhoud van je aanvraag zodra wij die per e-mail behandelen — staat daarmee ook in een door Google gehoste mailbox.</span><span class="en-only">Our jan@cadans.ai mailbox forwards to Gmail. Anything you email us — and the content of your request once we handle it by email — therefore also sits in a Google-hosted mailbox.</span></td>
+            <td><span class="nl-only">VS</span><span class="en-only">US</span></td>
+          </tr>
+          <tr>
+            <td>Google Fonts</td>
+            <td><span class="nl-only">Lettertypen; je IP-adres gaat naar Google bij het laden van de pagina</span><span class="en-only">Web fonts; your IP address goes to Google when the page loads</span></td>
+            <td><span class="nl-only">VS</span><span class="en-only">US</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      <span class="nl-only">Voor doorgifte naar de Verenigde Staten steunen we op standaardcontractbepalingen (SCC's) en/of het EU-US Data Privacy Framework. We verkopen je gegevens niet en delen ze niet met adverteerders.</span>
+      <span class="en-only">Transfers to the United States rely on Standard Contractual Clauses and/or the EU-US Data Privacy Framework. We do not sell your data and do not share it with advertisers.</span>
+    </p>
+    <div class="todo">
+      <strong>TODO vóór livegang —</strong>
+      <span class="nl-only">sluit en archiveer een verwerkersovereenkomst (DPA) met Cloudflare en Supabase — Supabase biedt die standaard aan via het dashboard. Overweeg daarnaast de Google Fonts lokaal te hosten: dat schrapt de laatste rij uit deze tabel volledig. De doorgifte via Gmail blijft dan nog staan; die verdwijnt alleen door de Migadu-mailbox niet meer naar Gmail door te sturen.</span>
+      <span class="en-only">sign and file a Data Processing Agreement with Cloudflare and Supabase — Supabase offers one through its dashboard. Also consider self-hosting the Google Fonts: that removes the last row of this table entirely. The Gmail transfer would remain — that one only goes away by no longer forwarding the Migadu mailbox to Gmail.</span>
+    </div>
+
+    <!-- 6. COOKIES -->
+    <h2>
+      <span class="nl-only">6. Cookies</span>
+      <span class="en-only">6. Cookies</span>
+    </h2>
+    <p>
+      <span class="nl-only">Deze site plaatst <strong>geen</strong> tracking- of analytics-cookies. Er draait geen Google Analytics, geen advertentiepixel en geen bezoekersstatistiek. Daarom zie je ook geen cookiebanner: die is niet nodig.</span>
+      <span class="en-only">This site sets <strong>no</strong> tracking or analytics cookies. There is no Google Analytics, no advertising pixel and no visitor statistics. That is also why you see no cookie banner: none is required.</span>
+    </p>
+    <p>
+      <span class="nl-only">Het enige dat we lokaal opslaan is je taalkeuze (<code>cadans-lang</code>) in de localStorage van je browser. Dat is een functionele voorkeur, blijft op je eigen apparaat en wordt nooit naar ons verstuurd.</span>
+      <span class="en-only">The only thing stored locally is your language preference (<code>cadans-lang</code>) in your browser's localStorage. That is a functional setting, stays on your own device and is never sent to us.</span>
+    </p>
+
+    <!-- 7. SECURITY -->
+    <h2>
+      <span class="nl-only">7. Beveiliging</span>
+      <span class="en-only">7. Security</span>
+    </h2>
+    <p>
+      <span class="nl-only">Het verkeer naar deze site loopt volledig over HTTPS. De database is afgeschermd met row-level security: de sleutel die in de website zit mag uitsluitend een nieuwe aanvraag toevoegen en kan geen enkele bestaande aanvraag teruglezen. Alleen wij kunnen de aanvragen inzien. Onze mailbox (Migadu, doorgestuurd naar Gmail) is beveiligd met een sterk wachtwoord en tweefactorauthenticatie.</span>
+      <span class="en-only">All traffic to this site runs over HTTPS. The database is protected by row-level security: the key embedded in the website may only add a new submission and cannot read back any existing one. Only we can view submissions. Our mailbox (Migadu, forwarded to Gmail) is protected with a strong password and two-factor authentication.</span>
+    </p>
+
+    <!-- 8. RIGHTS -->
+    <h2>
+      <span class="nl-only">8. Je rechten</span>
+      <span class="en-only">8. Your rights</span>
+    </h2>
+    <p>
+      <span class="nl-only">Onder de AVG heb je het recht om:</span>
+      <span class="en-only">Under the GDPR you have the right to:</span>
+    </p>
+    <ul>
+      <li><span class="nl-only">in te zien welke gegevens we van je hebben;</span><span class="en-only">access the data we hold about you;</span></li>
+      <li><span class="nl-only">onjuiste gegevens te laten corrigeren;</span><span class="en-only">have inaccurate data corrected;</span></li>
+      <li><span class="nl-only">je gegevens te laten wissen;</span><span class="en-only">have your data erased;</span></li>
+      <li><span class="nl-only">de verwerking te beperken of er bezwaar tegen te maken;</span><span class="en-only">restrict or object to the processing;</span></li>
+      <li><span class="nl-only">je gegevens in een gangbaar formaat over te dragen;</span><span class="en-only">receive your data in a portable format;</span></li>
+      <li><span class="nl-only">je toestemming op elk moment in te trekken — dat raakt niet de rechtmatigheid van wat daarvoor gebeurde.</span><span class="en-only">withdraw consent at any time — this does not affect processing that already took place.</span></li>
+    </ul>
+    <p>
+      <span class="nl-only">Eén mailtje naar <a href="mailto:jan@cadans.ai">jan@cadans.ai</a> is genoeg. We reageren binnen 30 dagen en vragen geen kosten. Je hoeft geen reden op te geven om gewist te worden.</span>
+      <span class="en-only">A single email to <a href="mailto:jan@cadans.ai">jan@cadans.ai</a> is enough. We respond within 30 days at no cost. You do not need to give a reason to be erased.</span>
+    </p>
+    <p>
+      <span class="nl-only">Ben je het oneens met hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de <a href="https://www.autoriteitpersoonsgegevens.nl/" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>, de Nederlandse toezichthouder.</span>
+      <span class="en-only">If you disagree with how we handle your data, you can lodge a complaint with the <a href="https://www.autoriteitpersoonsgegevens.nl/en" target="_blank" rel="noopener">Dutch Data Protection Authority</a>.</span>
+    </p>
+
+    <!-- 9. CHANGES -->
+    <h2>
+      <span class="nl-only">9. Wijzigingen</span>
+      <span class="en-only">9. Changes</span>
+    </h2>
+    <p>
+      <span class="nl-only">Als we dit beleid aanpassen, werken we de datum bovenaan bij. Bij ingrijpende wijzigingen die jou raken, laten we het je weten via het e-mailadres dat je hebt achtergelaten.</span>
+      <span class="en-only">If we update this policy, we will change the date at the top. For material changes that affect you, we will notify you at the email address you provided.</span>
+    </p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-strip">
+    <div class="footer-inner">
+      <span class="footer-logo">cadans.</span>
+      <ul class="footer-links">
+        <li><a href="/"><span class="nl-only">Home</span><span class="en-only">Home</span></a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="mailto:jan@cadans.ai">jan@cadans.ai</a></li>
+      </ul>
+      <span class="footer-copy">© 2026 cadans. — KvK [TODO]</span>
+    </div>
+  </footer>
+
+  <script src="/lang.js"></script>
+</body>
+</html>
