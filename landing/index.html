@@ -21,7 +21,7 @@
     "name": "Cadans",
     "description": "AI-partner voor het Nederlandse MKB. Cadans bouwt en beheert AI-assistenten, workflow-automatisering, maatwerk-software en vindbaarheid in AI (GEO).",
     "url": "https://cadans.ai/",
-    "email": "hallo@cadans.ai",
+    "email": "jan@cadans.ai",
     "areaServed": { "@type": "Country", "name": "Netherlands" },
     "knowsLanguage": ["nl", "en"],
     "makesOffer": [
@@ -767,6 +767,14 @@
       color: var(--ink-mid);
     }
 
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 140ms, border-color 140ms;
+    }
+    .contact-item a:hover { color: var(--indigo); border-color: var(--indigo); }
+
     .contact-item svg {
       width: 17px; height: 17px;
       stroke: var(--indigo);
@@ -795,6 +803,8 @@
       color: var(--ink);
       letter-spacing: 0.01em;
     }
+
+    .f-opt { font-weight: 400; color: var(--ink-faint); }
 
     .f-group input,
     .f-group select,
@@ -848,6 +858,53 @@
     }
     .f-submit:hover { background: var(--indigo-dk); transform: translateY(-1px); }
     .f-submit:disabled { background: var(--teal); cursor: default; transform: none; }
+    .f-submit.is-sending { background: var(--ink-faint); cursor: wait; transform: none; }
+
+    /* Honeypot — off-screen for humans, still filled in by naive bots. */
+    .f-hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px; height: 1px;
+      overflow: hidden;
+    }
+
+    .f-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--ink-mid);
+    }
+    .f-consent input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      margin-top: 2px;
+      accent-color: var(--indigo);
+      cursor: pointer;
+    }
+    .f-consent label { cursor: pointer; }
+    .f-consent a { color: var(--indigo); text-underline-offset: 2px; }
+
+    .f-status {
+      display: none;
+      font-size: 13.5px;
+      line-height: 1.5;
+      padding: 10px 13px;
+      border-radius: 9px;
+    }
+    .f-status.is-error {
+      display: block;
+      color: #9F1239;
+      background: #FFF1F2;
+      border: 1px solid #FECDD3;
+    }
+    .f-status.is-ok {
+      display: block;
+      color: #115E59;
+      background: #F0FDFA;
+      border: 1px solid #99F6E4;
+    }
 
     /* ── Footer ── */
     .footer-strip {
@@ -1360,7 +1417,7 @@
           <div class="contact-items">
             <div class="contact-item">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>hallo@cadans.ai</span>
+              <a href="mailto:jan@cadans.ai">jan@cadans.ai</a>
             </div>
             <div class="contact-item">
               <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1388,21 +1445,46 @@
               <input type="text" id="f-name" name="name" required data-nl-ph="Jan de Vries" data-en-ph="John Smith" placeholder="Jan de Vries" />
             </div>
             <div class="f-group">
-              <label for="f-phone"><span class="nl-only">Telefoonnummer</span><span class="en-only">Phone number</span></label>
-              <input type="tel" id="f-phone" name="phone" data-nl-ph="+31 6 00 00 00 00" data-en-ph="+31 6 00 00 00 00" placeholder="+31 6 00 00 00 00" />
+              <label for="f-email"><span class="nl-only">E-mailadres</span><span class="en-only">Email address</span></label>
+              <input type="email" id="f-email" name="email" required autocomplete="email" data-nl-ph="jan@devriesloodgieters.nl" data-en-ph="john@smithandsons.com" placeholder="jan@devriesloodgieters.nl" />
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-group">
+              <label for="f-phone"><span class="nl-only">Telefoonnummer <span class="f-opt">(optioneel)</span></span><span class="en-only">Phone number <span class="f-opt">(optional)</span></span></label>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" data-nl-ph="+31 6 00 00 00 00" data-en-ph="+31 6 00 00 00 00" placeholder="+31 6 00 00 00 00" />
+            </div>
+            <div class="f-group">
+              <label for="f-company"><span class="nl-only">Bedrijf &amp; branche <span class="f-opt">(optioneel)</span></span><span class="en-only">Company &amp; sector <span class="f-opt">(optional)</span></span></label>
+              <input type="text" id="f-company" name="company" data-nl-ph="De Vries Loodgieters, Bouw" data-en-ph="Smith &amp; Sons, Construction" placeholder="De Vries Loodgieters, Bouw" />
             </div>
           </div>
           <div class="f-group">
-            <label for="f-company"><span class="nl-only">Bedrijf & branche</span><span class="en-only">Company & sector</span></label>
-            <input type="text" id="f-company" name="company" data-nl-ph="De Vries Loodgieters, Bouw" data-en-ph="Smith & Sons, Construction" placeholder="De Vries Loodgieters, Bouw" />
-          </div>
-          <div class="f-group">
-            <label for="f-msg"><span class="nl-only">Vertel kort over je situatie</span><span class="en-only">Tell us about your situation</span></label>
+            <label for="f-msg"><span class="nl-only">Vertel kort over je situatie <span class="f-opt">(optioneel)</span></span><span class="en-only">Tell us about your situation <span class="f-opt">(optional)</span></span></label>
             <textarea id="f-msg" name="message" rows="4"
               data-nl-ph="Wat doe je, hoeveel berichten per week, wat wil je uitbesteden?"
               data-en-ph="What do you do, how many messages per week, what to outsource?"
               placeholder="Wat doe je, hoeveel berichten per week, wat wil je uitbesteden?"></textarea>
           </div>
+
+          <!-- Honeypot: hidden from humans, so anything here means a bot.
+               Deliberately named nothing a password manager or form-filler
+               would recognise — an autofilled value here would silently
+               discard a real lead. -->
+          <div class="f-hp" aria-hidden="true">
+            <input type="text" id="f-hp-2" name="f_hp_2" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="f-consent">
+            <input type="checkbox" id="f-consent" name="consent" required />
+            <label for="f-consent">
+              <span class="nl-only">Ik ga ermee akkoord dat Cadans mijn gegevens gebruikt om contact met mij op te nemen over deze aanvraag, zoals beschreven in het <a href="/privacy">privacybeleid</a>.</span>
+              <span class="en-only">I agree that Cadans may use my details to contact me about this request, as described in the <a href="/privacy">privacy policy</a>.</span>
+            </label>
+          </div>
+
+          <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
+
           <button type="submit" class="f-submit">
             <span class="nl-only">Gratis intake aanvragen</span>
             <span class="en-only">Request free consultation</span>
@@ -1419,7 +1501,7 @@
       <span class="footer-logo">cadans.</span>
       <ul class="footer-links">
         <li><a href="#producten"><span class="nl-only">Producten</span><span class="en-only">Products</span></a></li>
-        <li><a href="#">Privacy</a></li>
+        <li><a href="/privacy">Privacy</a></li>
         <li><a href="#"><span class="nl-only">Voorwaarden</span><span class="en-only">Terms</span></a></li>
       </ul>
       <span class="footer-copy">© 2026 cadans. — KvK 12345678</span>
