@@ -8,7 +8,7 @@
   //
   // Only `landing/` is published. Pointing this at the repo root would upload
   // agent configs, strategy docs and client notes to a public URL.
-  "name": "cadans-site",
+  "name": "cadans-landing",
   "compatibility_date": "2026-08-04",
   "assets": {
     "directory": "./landing"
