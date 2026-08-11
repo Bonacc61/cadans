@@ -246,7 +246,7 @@
       isolation: isolate;
     }
 
-    .hero > .hero-content { position: relative; z-index: 1; max-width: 600px; }
+    .hero > .hero-content { position: relative; z-index: 1; max-width: 760px; }
 
     .hero-eyebrow {
       font-family: var(--f-mono);
@@ -270,9 +270,11 @@
 
     .hero-headline {
       font-family: var(--f-disp);
-      font-size: clamp(44px, 5.8vw, 76px);
+      /* Sized for the three-line headline — the longest line must clear the
+         hero-content width without wrapping mid-phrase. */
+      font-size: clamp(32px, 4.6vw, 50px);
       font-weight: 800;
-      line-height: 1.03;
+      line-height: 1.06;
       letter-spacing: -0.035em;
       color: var(--ink);
       margin-bottom: 26px;
@@ -994,7 +996,10 @@
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .nav-toggle { display: flex; }
-      .hero-headline { font-size: 38px; }
+      /* Let the headline wrap naturally on phones — the forced three-line
+         break needs more width than a phone has. */
+      .hero-headline { font-size: 31px; }
+      .hero-headline br { display: none; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-cell { padding: 30px 20px; }
       .stat-n { font-size: 38px; }
@@ -1055,12 +1060,12 @@
           <span class="en-only">AI development · Workflow automation</span>
         </p>
         <h1 class="hero-headline" id="h1">
-          <span class="nl-only">Jouw AI-partner<br>die de <em>cadans</em> houdt.</span>
-          <span class="en-only">Your AI partner<br>that keeps the <em>rhythm.</em></span>
+          <span class="nl-only">Jouw AI-partner <br>die het handwerk automatiseert <br>en de <em>cadans</em> houdt.</span>
+          <span class="en-only">Your AI partner <br>that automates the manual work <br>and keeps the <em>rhythm.</em></span>
         </h1>
         <p class="hero-sub">
-          <span class="nl-only">We kijken naar je bedrijf, bouwen wat past en blijven betrokken — van AI-assistent en workflow-automatisering tot maatwerk-software en vindbaarheid in AI. Eén partner voor het Nederlandse MKB.</span>
-          <span class="en-only">We look at your business, build what fits and stay involved — from an AI assistant and workflow automation to custom software and AI visibility. One partner for Dutch SMEs.</span>
+          <span class="nl-only">We kijken naar je bedrijf, bouwen wat past en blijven betrokken — van proactieve AI-assistenten, RAG-pipelines en workflow-automatisering tot maatwerk-software en vindbaarheid in AI. Eén partner voor het Nederlandse MKB.</span>
+          <span class="en-only">We look at your business, build what fits and stay involved — from proactive AI assistants, RAG pipelines and workflow automation to custom software and AI visibility. One partner for Dutch SMEs.</span>
         </p>
         <div class="hero-btns">
           <a href="#contact" class="btn-ink">
@@ -1339,7 +1344,7 @@
       <div class="stats-grid">
         <div class="stat-cell">
           <div class="stat-n">Agents</div>
-          <div class="stat-l"><span class="nl-only">Agent-development — autonome AI-assistenten, gebouwd op Claude</span><span class="en-only">Agent development — autonomous AI assistants, built on Claude</span></div>
+          <div class="stat-l"><span class="nl-only">Agent-development — autonome AI-assistenten, gebouwd op agent-frameworks</span><span class="en-only">Agent development — autonomous AI assistants, built on agent frameworks</span></div>
         </div>
         <div class="stat-cell">
           <div class="stat-n">RAG</div>
