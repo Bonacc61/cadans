@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadans PA: Uw AI-assistent op WhatsApp</title>
+  <meta name="description" content="Cadans PA neemt uw e-mail, agenda en adminwerk over via WhatsApp. Persoonlijk ingericht, binnen 5 werkdagen live. Vanaf €250/maand." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <a href="/" class="nav-logo" aria-label="cadans. home">cadans.</a>
+    <nav class="nav-links" aria-label="Hoofdnavigatie">
+      <a href="/assistent" class="nav-active">Cadans PA</a>
+      <a href="/geo">AI Visibility</a>
+      <a href="/bureaus">Bureaus</a>
+    </nav>
+    <button class="lang-btn" id="lang-btn" aria-label="Switch to English">EN</button>
+    <a href="#contact" class="btn-primary btn-sm">
+      <span class="nl-only">Gratis intake</span><span class="en-only">Free consultation</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </header>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="/assistent">Cadans PA</a>
+    <a href="/geo">AI Visibility</a>
+    <a href="/bureaus">Bureaus</a>
+    <a href="#contact" class="btn-primary">Gratis intake</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="pulse-motif" aria-hidden="true">
+          <span class="dot dot-sm"></span><span class="dot dot-sm"></span>
+          <span class="dot dot-lg"></span><span class="dot dot-lg"></span><span class="dot dot-lg"></span>
+          <span class="dot dot-sm"></span><span class="dot dot-sm"></span>
+        </div>
+        <div class="hero-kicker">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Cadans PA
+        </div>
+        <h1 id="hero-heading">Uw inbox.<br />Uw agenda.<br /><em>In handen van AI.</em></h1>
+        <p class="hero-sub">
+          Een persoonlijke AI-assistent die via WhatsApp werkt,
+          precies zoals ú communiceert. Geen app te leren, geen inloggen.
+          U stuurt een berichtje; de rest gebeurt vanzelf.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Plan een gratis intake</a>
+          <a href="#hoe-het-werkt" class="btn-ghost">Hoe werkt het? →</a>
+        </div>
+        <div class="hero-tags" aria-label="Kernpunten">
+          <span class="tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Binnen 5 werkdagen live
+          </span>
+          <span class="tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Geen contract, maand-op-maand
+          </span>
+          <span class="tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            EU-hosted, GDPR-compliant
+          </span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="wa-phone">
+          <div class="wa-notch"></div>
+          <div class="wa-screen">
+            <div class="wa-header">
+              <div class="wa-back">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </div>
+              <div class="wa-avatar-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </div>
+              <div class="wa-info">
+                <div class="wa-name">Cadans PA</div>
+                <div class="wa-status-dot">online</div>
+              </div>
+            </div>
+            <div class="wa-body">
+              <div class="wa-date-divider">Vandaag</div>
+              <div class="wa-bubble wa-in">
+                Goedemorgen! Ik heb uw inbox doorgenomen: 3 e-mails vragen actie vandaag. Samenvatten?
+              </div>
+              <div class="wa-bubble wa-out">ja</div>
+              <div class="wa-bubble wa-in">
+                <strong>1. Offerte Bakker BV</strong> wacht op uw akkoord (deadline vrijdag).<br />
+                <strong>2. Smit & Zn</strong> vraagt de afspraak van dinsdag te verzetten.<br />
+                <strong>3. Factuur €2.340</strong> staat al 17 dagen open.<br /><br />
+                Wat wilt u dat ik doe?
+              </div>
+              <div class="wa-bubble wa-out">offerte doorsturen en factuur herinnering sturen</div>
+              <div class="wa-bubble wa-in">
+                Gedaan. Offerte bevestigd aan Bakker BV en betaalherinnering verstuurd voor factuur #2024-089.
+                <br /><br />
+                Wilt u de afspraak met Smit ook meteen verzetten?
+              </div>
+              <div class="wa-bubble wa-out">ja maandag 10u</div>
+              <div class="wa-bubble wa-in">
+                Ingepland voor maandag 10:00. Uitnodiging verstuurd.
+                <span class="wa-check">✓✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" aria-labelledby="problem-heading">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="stat-block">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">uur per dag kwijt aan<br />e-mail en adminwerk</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">€150+</div>
+          <div class="stat-label">verliezen ZZP'ers<br />per admin-uur aan omzet</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">€2.500</div>
+          <div class="stat-label">betaalt u voor een<br />menselijke PA per maand</div>
+        </div>
+      </div>
+      <p class="problem-conclusion">
+        Cadans PA kost een tiende van een menselijke PA en werkt via het kanaal dat u al dagelijks gebruikt.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="functies" aria-labelledby="features-heading">
+    <div class="container">
+      <span class="eyebrow">Wat Cadans PA doet</span>
+      <h2 id="features-heading">Zes taken van uw bordje.<br />Op één plek.</h2>
+      <div class="features-grid">
+
+        <div class="feature-card feature-card--wide">
+          <div class="feature-icon feature-icon--indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>E-mail triage</h3>
+          <p>Elke inkomende e-mail wordt ingedeeld als <strong>Actie vereist</strong>, <strong>Ter info</strong> of <strong>Overslaan</strong>. U leest alleen wat er echt toe doet. Op verzoek draftet de PA een antwoord in uw eigen toon.</p>
+          <div class="feature-example">
+            <span class="ex-label">Voorbeeld</span>
+            "Stuur een vriendelijke opvolging naar de drie leads van vorige week."
+          </div>
+        </div>
+
+        <div class="feature-card feature-card--wide">
+          <div class="feature-icon feature-icon--indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Agendabeheer</h3>
+          <p>Afspraken inplannen, verzetten en bewaken, inclusief buffers en focusblokken die u zelf hebt ingesteld. De PA stuurt uitnodigingen en bevestigingen namens u.</p>
+          <div class="feature-example">
+            <span class="ex-label">Voorbeeld</span>
+            "Plan een kennismaking van 45 minuten met Jansen, ergens woensdag of donderdag middag."
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <h3>Taken vastleggen</h3>
+          <p>Stuur een losse gedachte: "ik moet nog de bank bellen", en de PA zet het op uw takenlijst met deadline als u die noemt. Nooit meer sticky-note chaos.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>Onderzoek op aanvraag</h3>
+          <p>Snel iets opzoeken: een KvK-nummer, een concurrentieanalyse, de actuele BTW-regels. De PA zoekt het op en stuurt u een beknopte samenvatting.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3>E-mail draften</h3>
+          <p>Geef een korte instructie; de PA schrijft het concept in uw toon van stem; na een paar weken weet de assistent hoe u schrijft. U hoeft alleen nog goed te keuren.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Contactintelligentie</h3>
+          <p>De PA leert de communicatiepatronen van uw contacten: wie snel reageert, wie een reminder nodig heeft, hoe formeel iemand communiceert. Uw relaties worden beter bediend.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="process" id="hoe-het-werkt" aria-labelledby="process-heading">
+    <div class="container">
+      <span class="eyebrow">De aanpak</span>
+      <h2 id="process-heading">Van aanmelding tot live assistent in 5 dagen.</h2>
+      <div class="process-track" aria-label="Stappenplan">
+        <div class="process-step">
+          <div class="ps-day" aria-label="Dag 1">Dag 1</div>
+          <div class="ps-dot" aria-hidden="true"></div>
+          <div class="ps-content">
+            <h3>Discovery</h3>
+            <p>Een gesprek van 60 minuten. We leren uw werkwijze, uw contacten en uw communicatiestijl kennen.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-day" aria-label="Dag 2">Dag 2</div>
+          <div class="ps-dot" aria-hidden="true"></div>
+          <div class="ps-content">
+            <h3>Inrichting</h3>
+            <p>We koppelen uw Gmail en Google Calendar, stellen de e-mailregels in en activeren uw WhatsApp-nummer.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-day" aria-label="Dag 3">Dag 3</div>
+          <div class="ps-dot" aria-hidden="true"></div>
+          <div class="ps-content">
+            <h3>Afstemming</h3>
+            <p>We draaien de eerste berichten samen door. U corrigeert toon of regels waar nodig , de assistent leert direct.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-day" aria-label="Dag 4">Dag 4</div>
+          <div class="ps-dot" aria-hidden="true"></div>
+          <div class="ps-content">
+            <h3>Test</h3>
+            <p>We sturen 20+ testberichten langs alle scenario's. Alles wat mis gaat wordt gecorrigeerd vóór live-gang.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="ps-day" aria-label="Dag 5">Dag 5</div>
+          <div class="ps-dot" aria-hidden="true"></div>
+          <div class="ps-content">
+            <h3>Live &amp; overdracht</h3>
+            <p>Uw assistent is actief. We lopen samen de eerste digest door en u weet precies hoe u bijstuurt via WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="tarieven" aria-labelledby="pricing-heading">
+    <div class="container">
+      <span class="eyebrow">Tarieven</span>
+      <h2 id="pricing-heading">Kies het niveau dat bij u past.</h2>
+      <div class="pricing-grid">
+
+        <article class="pricing-card" aria-labelledby="plan-standard">
+          <div class="plan-name" id="plan-standard">PA Standard</div>
+          <div class="plan-for">MKB-eigenaar, ZZP'er</div>
+          <div class="plan-price">
+            <span class="plan-monthly">€250<span>/mo</span></span>
+            <span class="plan-setup">+ €2.500 eenmalige setup</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> E-mail triage &amp; concepten</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Agendabeheer &amp; afspraken</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Taken vastleggen</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Onderzoek op aanvraag</li>
+            <li class="plan-feature--muted"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Morning briefing</li>
+            <li class="plan-feature--muted"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Slack / Teams integratie</li>
+          </ul>
+          <a href="#contact" class="btn-outline">Start met Standard</a>
+        </article>
+
+        <article class="pricing-card pricing-card--featured" aria-labelledby="plan-plus">
+          <div class="plan-badge">Meest gekozen</div>
+          <div class="plan-name" id="plan-plus">PA Plus</div>
+          <div class="plan-for">Senior ZZP'er, interim manager</div>
+          <div class="plan-price">
+            <span class="plan-monthly">€350<span>/mo</span></span>
+            <span class="plan-setup">+ €4.000 eenmalige setup</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Alles uit Standard</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Morning briefing (dagelijks 08:00)</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Vergadervoorbereiding</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> EOD-samenvatting</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Prioritering op uw uurtarief</li>
+            <li class="plan-feature--muted"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Slack / Teams integratie</li>
+          </ul>
+          <a href="#contact" class="btn-primary">Start met Plus</a>
+        </article>
+
+        <article class="pricing-card" aria-labelledby="plan-enterprise">
+          <div class="plan-name" id="plan-enterprise">PA Enterprise</div>
+          <div class="plan-for">Bedrijf met 10-25 medewerkers</div>
+          <div class="plan-price">
+            <span class="plan-monthly">€500<span>/mo</span></span>
+            <span class="plan-setup">+ €6.000 eenmalige setup</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Alles uit Plus</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Multi-kanaal (Slack, Teams)</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> CRM-integratie op maat</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Aangepaste skills &amp; workflows</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Dedicated account manager</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> SLA met reactietijden</li>
+          </ul>
+          <a href="#contact" class="btn-outline">Neem contact op</a>
+        </article>
+
+      </div>
+
+      <!-- Upsells -->
+      <div class="upsells" aria-labelledby="upsells-heading">
+        <h3 id="upsells-heading" class="upsells-heading">Uitbreiden wanneer u er klaar voor bent.</h3>
+        <p class="upsells-sub">Elk van deze modules koppelt direct aan uw PA: geen nieuwe app, geen herinrichting.</p>
+        <div class="upsells-grid">
+          <div class="upsell-card">
+            <div class="upsell-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <div class="upsell-name">Cadans Collect</div>
+              <div class="upsell-desc">Geautomatiseerde factuurherinneringen, vriendelijk tot formeel. Geen ongemakkelijke telefoontjes meer.</div>
+              <div class="upsell-price">+ €150+300/mo</div>
+            </div>
+          </div>
+          <div class="upsell-card">
+            <div class="upsell-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div>
+              <div class="upsell-name">Cadans Books</div>
+              <div class="upsell-desc">Bonnetjes via WhatsApp insturen, automatisch categoriseren en BTW-overzicht klaar voor uw boekhouder.</div>
+              <div class="upsell-price">+ €200-500/mo</div>
+            </div>
+          </div>
+          <div class="upsell-card">
+            <div class="upsell-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div>
+              <div class="upsell-name">Cadans Support</div>
+              <div class="upsell-desc">WhatsApp-klantenservice die 80% van vragen zelfstandig beantwoordt. Complexe vragen gaan door naar u.</div>
+              <div class="upsell-price">+ €300-800/mo</div>
+            </div>
+          </div>
+        </div>
+        <p class="upsells-stack">PA + Collect + Books = <strong>€1.050/mo</strong>, een volledig AI-backoffice voor de prijs van een dag freelance werk.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="forwho" aria-labelledby="forwho-heading">
+    <div class="container">
+      <span class="eyebrow">Voor wie</span>
+      <h2 id="forwho-heading">Herkent u zichzelf?</h2>
+      <div class="personas-grid">
+        <div class="persona-card">
+          <div class="persona-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>MKB-eigenaar</h3>
+          <p class="persona-profile">35-55 jaar · 1-25 medewerkers · Services of vakwerk</p>
+          <ul class="persona-pains">
+            <li>Verliest 2+ uur per dag aan e-mail en agenda</li>
+            <li>Mist klant-follow-ups door drukte</li>
+            <li>Kan geen menselijke PA rechtvaardigen à €2.500/mo</li>
+            <li>Werkt al dagelijks op WhatsApp</li>
+          </ul>
+          <div class="persona-verdict">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            PA Standard of Plus
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <h3>Senior ZZP'er</h3>
+          <p class="persona-profile">40-60 jaar · Interim / consultant · €100-200/uur</p>
+          <ul class="persona-pains">
+            <li>30% van de week niet-declarabel aan admin</li>
+            <li>Elke admin-uur kost €100-200 aan omzet</li>
+            <li>Wisselende kwaliteit van virtuele assistenten</li>
+            <li>Wil focus op het werk waar hij/zij goed in is</li>
+          </ul>
+          <div class="persona-verdict">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            PA Plus. ROI zichtbaar binnen een week
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <span class="eyebrow">Veelgestelde vragen</span>
+      <h2 id="faq-heading">Wat u wilt weten.</h2>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            Heeft u toegang tot mijn e-mail?
+            <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            De assistent leest uw inbox via een OAuth-koppeling met uw Google-account (dezelfde manier waarop u een app als Calendly toegang geeft). Cadans ziet de inhoud van e-mails alleen om ze te categoriseren en te beantwoorden; we lezen niet mee en slaan inhoud niet op. Alle data staat op EU-servers.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            Wat als de assistent iets verkeerd doet?
+            <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            De PA stuurt nooit zelfstandig een e-mail of bevestigt een afspraak zonder uw akkoord, tenzij u dat expliciet hebt ingesteld. Correcties geeft u direct via WhatsApp, de assistent past zijn gedrag aan en onthoudt de voorkeur voor de volgende keer.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            Werkt het ook met Outlook of alleen Gmail?
+            <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            De MVP ondersteunt Gmail en Google Calendar. Outlook / Microsoft 365 is beschikbaar voor Enterprise-klanten. Zit u op Outlook? Meld dat bij de intake: we zetten het op de roadmap.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            Zit ik vast aan een contract?
+            <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            Nee. De maandelijkse fee loopt maand-op-maand met één maand opzegtermijn. De setup-fee is eenmalig en niet restitueerbaar. Als de assistent na de eerste maand niet bevalt, stopt u, zonder verdere verplichting.
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
+            Hoe privé is dit? Mag mijn klantdata niet naar de VS?
+            <svg class="faq-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            Alle infrastructuur draait op Hetzner-servers in Frankfurt. Communicatie tussen uw inbox en de assistent is end-to-end versleuteld. Het AI-model draait via de Anthropic API. Verwerking vindt plaatsvinden conform EU AI Act en de verwerkersovereenkomst die u bij aanmelding ondertekent.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <div class="container contact-inner">
+      <div class="contact-text">
+        <span class="eyebrow eyebrow--light">Aan de slag</span>
+        <h2 id="contact-heading">Hoeveel uur per week wint u terug?</h2>
+        <p>Plan een gratis intake van 30 minuten. We laten u zien hoeveel uur uw PA u bespaart, en welk tier daarvoor het meest geschikt is.</p>
+        <div class="contact-roi" aria-label="ROI-berekening">
+          <div class="roi-row">
+            <span>Geschatte tijdbesparing</span>
+            <span class="roi-val">8-12 uur/week</span>
+          </div>
+          <div class="roi-row">
+            <span>Waarde bij €100/uur</span>
+            <span class="roi-val roi-positive">€800-1.200/week</span>
+          </div>
+          <div class="roi-row">
+            <span>Kosten Cadans PA Plus</span>
+            <span class="roi-val">€350/maand</span>
+          </div>
+          <div class="roi-divider"></div>
+          <div class="roi-row roi-row--total">
+            <span>ROI eerste maand</span>
+            <span class="roi-val roi-positive">~20×</span>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" action="#" method="post" novalidate aria-label="Contactformulier">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Naam</label>
+            <input type="text" id="name" name="name" placeholder="Jan de Vries" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Bedrijfsnaam</label>
+            <input type="text" id="company" name="company" placeholder="Uw bedrijf" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" placeholder="jan@uwbedrijf.nl" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label for="tier">Welk niveau interesse</label>
+          <select id="tier" name="tier">
+            <option value="" disabled selected>Kies…</option>
+            <option value="standard">PA Standard (€250/mo)</option>
+            <option value="plus">PA Plus (€350/mo)</option>
+            <option value="enterprise">PA Enterprise (€500/mo)</option>
+            <option value="unknown">Nog niet zeker</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Uw situatie <span class="label-optional">(optioneel)</span></label>
+          <textarea id="message" name="message" rows="3" placeholder="Hoeveel uur per dag gaat er nu naar e-mail en agenda?"></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">
+          Plan gratis intake
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <p class="form-gdpr">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          GDPR-compliant · EU-hosted · Geen verplichtingen
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo" aria-label="cadans. home">cadans.</a>
+          <p class="footer-tagline">Jouw agent houdt de cadans.</p>
+        </div>
+        <nav class="footer-cols" aria-label="Footer navigatie">
+          <div class="footer-col">
+            <div class="footer-col-heading">Diensten</div>
+            <a href="/assistent">Cadans PA</a>
+            <a href="/geo">AI Visibility</a>
+            <a href="/bureaus">Voor bureaus</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-heading">Cadans PA</div>
+            <a href="#functies">Functies</a>
+            <a href="#tarieven">Tarieven</a>
+            <a href="#hoe-het-werkt">Aanpak</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-heading">Bedrijf</div>
+            <a href="/privacy">Privacy</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 cadans.</p>
+        <p class="footer-legal">EU-hosted · GDPR-compliant · Made in the Netherlands</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="../lang.js"></script>
+</body>
+</html>

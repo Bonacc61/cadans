@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadans — AI-partner voor het MKB | Workflow-automatisering, RAG &amp; AI-assistenten</title>
-  <meta name="description" content="Stop met herhaalwerk. Cadans bouwt workflow-automatisering, RAG-pipelines, interne chatbots, voice-chatbots, AI-assistenten, maatwerk-software en GEO voor het Nederlandse MKB. EU-hosting, GDPR." />
+  <title>Cadans — AI-partner voor het MKB | AI-assistent, automatisering &amp; GEO</title>
+  <meta name="description" content="Cadans is je vaste AI-partner voor het Nederlandse MKB. We bouwen wat past: AI-assistent, workflow-automatisering, maatwerk-software en vindbaarheid in AI (GEO). EU-hosting, GDPR." />
   <link rel="canonical" href="https://cadans.ai/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Cadans" />
-  <meta property="og:title" content="Cadans — Stop met herhaalwerk" />
-  <meta property="og:description" content="Jouw AI-partner zet je bedrijf op de automatische piloot: workflow-automatisering, RAG-pipelines, chatbots, AI-assistenten, maatwerk-software en GEO. Voor het Nederlandse MKB." />
+  <meta property="og:title" content="Cadans — AI-partner voor het MKB" />
+  <meta property="og:description" content="Eén AI-partner die je bedrijf in cadans houdt: AI-assistent, workflow-automatisering, maatwerk-software en vindbaarheid in AI (GEO). Voor het Nederlandse MKB." />
   <meta property="og:url" content="https://cadans.ai/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cadans — Stop met herhaalwerk" />
-  <meta name="twitter:description" content="Jouw AI-partner zet je bedrijf op de automatische piloot: workflow-automatisering, RAG-pipelines, chatbots, AI-assistenten, maatwerk-software en GEO. Voor het Nederlandse MKB." />
+  <meta name="twitter:title" content="Cadans — AI-partner voor het MKB" />
+  <meta name="twitter:description" content="Eén AI-partner die je bedrijf in cadans houdt: AI-assistent, workflow-automatisering, maatwerk-software en GEO. Voor het Nederlandse MKB." />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Cadans",
-    "description": "AI-partner voor het Nederlandse MKB. Cadans bouwt workflow-automatisering, RAG-pipelines, interne chatbots, voice-chatbots, persoonlijke AI-assistenten, maatwerk-software en vindbaarheid in AI (GEO).",
+    "description": "AI-partner voor het Nederlandse MKB. Cadans bouwt en beheert AI-assistenten, workflow-automatisering, maatwerk-software en vindbaarheid in AI (GEO).",
     "url": "https://cadans.ai/",
     "email": "jan@cadans.ai",
     "areaServed": { "@type": "Country", "name": "Netherlands" },
@@ -30,7 +30,7 @@
         "itemOffered": {
           "@type": "Service",
           "name": "AI-assistent voor het MKB",
-          "description": "Persoonlijke AI-assistenten: digitale tweelingen, getraind op specifieke functieprofielen, die concepten schrijven en de agenda beheren."
+          "description": "Een AI-assistent gekoppeld aan mailbox, agenda, WhatsApp en Google Drive die meeleest, antwoordt en afspraken inplant — in jouw schrijfstijl."
         }
       },
       {
@@ -63,22 +63,6 @@
           "@type": "Service",
           "name": "AI-voicebot voor reserveringen",
           "description": "Een AI-voicebot die 24/7 de telefoon opneemt, reserveringen aanneemt en vragen beantwoordt."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "RAG-pipelines op je eigen data",
-          "description": "Beveiligde interne kennisbanken waarin je team je bedrijfsdocumentatie direct kan bevragen, mét bronvermelding."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Interne kennisbot voor je team",
-          "description": "Een interne chatbot die nieuwe medewerkers inwerkt en operationele vragen beantwoordt zonder dat managers gestoord worden."
         }
       }
     ]
@@ -707,12 +691,6 @@
       margin-top: 48px;
     }
 
-    /* The capabilities matrix has seven cells, so the last one stretches across
-       whatever the final row leaves empty. Declared here, above the breakpoints,
-       so the narrower spans in the media queries can still override it — media
-       queries add no specificity, only source order decides. */
-    #capaciteiten .why-item:last-child { grid-column: span 3; }
-
     .why-item.why-row {
       background: var(--canvas);
       padding: 34px 30px;
@@ -1011,31 +989,13 @@
       .pt-panel-body { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
-      #capaciteiten .why-item:last-child { grid-column: span 2; }
       .contact-inner { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    /* Keyword line above each capability title — carries the search terms the
-       product tabs used to hold, now that the matrix has replaced them. */
-    .cap-kw {
-      font-family: var(--f-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: var(--indigo);
-      margin-bottom: 7px;
-    }
-
-    /* The nav CTA plus the wider "Capaciteiten" label stop fitting before the
-       phone breakpoint — hand over to the hamburger earlier so the bar can't
-       overflow. */
-    @media (max-width: 760px) {
+    @media (max-width: 620px) {
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .nav-toggle { display: flex; }
-    }
-
-    @media (max-width: 620px) {
       /* Let the headline wrap naturally on phones — the forced three-line
          break needs more width than a phone has. */
       .hero-headline { font-size: 31px; }
@@ -1044,7 +1004,6 @@
       .stat-cell { padding: 30px 20px; }
       .stat-n { font-size: 38px; }
       .why-grid { grid-template-columns: 1fr; }
-      #capaciteiten .why-item:last-child { grid-column: auto; }
       .f-row { grid-template-columns: 1fr; }
       .section { padding: 60px 20px; }
       .products-inner { padding: 0 20px; }
@@ -1063,7 +1022,7 @@
         <a href="/" class="nav-logo" aria-label="cadans. home">cadans.</a>
         <nav aria-label="Hoofdmenu">
           <ul class="nav-links">
-            <li><a href="#capaciteiten"><span class="nl-only">Capaciteiten</span><span class="en-only">Capabilities</span></a></li>
+            <li><a href="#producten"><span class="nl-only">Producten</span><span class="en-only">Products</span></a></li>
             <li><a href="#werkwijze"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></a></li>
             <li><a href="#waarom"><span class="nl-only">Waarom cadans</span><span class="en-only">Why cadans</span></a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1084,7 +1043,7 @@
       </div>
     </div>
     <nav class="mobile-menu" id="mobile-menu" aria-label="Mobiel menu" aria-hidden="true">
-      <a href="#capaciteiten"><span class="nl-only">Capaciteiten</span><span class="en-only">Capabilities</span></a>
+      <a href="#producten"><span class="nl-only">Producten</span><span class="en-only">Products</span></a>
       <a href="#werkwijze"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></a>
       <a href="#waarom"><span class="nl-only">Waarom cadans</span><span class="en-only">Why cadans</span></a>
       <a href="#contact">Contact</a>
@@ -1101,22 +1060,22 @@
           <span class="en-only">AI development · Workflow automation</span>
         </p>
         <h1 class="hero-headline" id="h1">
-          <span class="nl-only">Stop met herhaalwerk. <br>Jouw AI-partner zet je bedrijf <br>op de <em>automatische piloot</em>.</span>
-          <span class="en-only">Stop repetitive work. <br>Your AI partner puts <br>your business on <em>autopilot</em>.</span>
+          <span class="nl-only">Jouw AI-partner <br>die het handwerk automatiseert <br>en de <em>cadans</em> houdt.</span>
+          <span class="en-only">Your AI partner <br>that automates the manual work <br>and keeps the <em>rhythm.</em></span>
         </h1>
         <p class="hero-sub">
-          <span class="nl-only">We ontwerpen en bouwen AI-systemen en autonome workflows op maat voor het Nederlandse MKB. We integreren slimme agents direct in je bedrijfsvoering, zodat handmatige knelpunten verdwijnen en je capaciteit meegroeit.</span>
-          <span class="en-only">We engineer custom AI systems and autonomous workflows for Dutch SMEs. We integrate smart agents directly into your business operations to eliminate manual bottlenecks and scale your capacity.</span>
+          <span class="nl-only">We kijken naar je bedrijf, bouwen wat past en blijven betrokken — van proactieve AI-assistenten, RAG-pipelines en workflow-automatisering tot maatwerk-software en vindbaarheid in AI. Eén partner voor het Nederlandse MKB.</span>
+          <span class="en-only">We look at your business, build what fits and stay involved — from proactive AI assistants, RAG pipelines and workflow automation to custom software and AI visibility. One partner for Dutch SMEs.</span>
         </p>
         <div class="hero-btns">
           <a href="#contact" class="btn-ink">
-            <span class="nl-only">Plan een gratis kennismaking</span>
-            <span class="en-only">Book a free intro call</span>
+            <span class="nl-only">Gratis intake aanvragen</span>
+            <span class="en-only">Request free consultation</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="#capaciteiten" class="btn-outline">
-            <span class="nl-only">Bekijk wat we bouwen</span>
-            <span class="en-only">See what we build</span>
+          <a href="#producten" class="btn-outline">
+            <span class="nl-only">Meer lezen</span>
+            <span class="en-only">Learn more</span>
           </a>
         </div>
       </div>
@@ -1159,63 +1118,6 @@
       </div>
     </div>
 
-    <!-- ── CAPABILITIES MATRIX ── -->
-    <section class="section" id="capaciteiten" aria-labelledby="h-cap">
-      <p class="sec-label"><span class="nl-only">Capaciteiten</span><span class="en-only">Capabilities</span></p>
-      <h2 class="sec-title" id="h-cap">
-        <span class="nl-only">Wat we bouwen —<br>en wat het oplevert.</span>
-        <span class="en-only">What we build —<br>and what it delivers.</span>
-      </h2>
-      <p class="sec-sub">
-        <span class="nl-only">Geen losse tools aan elkaar geknoopt. Systemen die we ontwerpen, bouwen en koppelen aan de software die je al gebruikt.</span>
-        <span class="en-only">Not a set of tools tied together. Systems we design, build and connect to the software you already run.</span>
-      </p>
-      <div class="why-grid">
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">Workflow-automatisering voor het MKB</span><span class="en-only">Workflow automation for SMEs</span></p>
-          <h3 class="why-title"><span class="nl-only">Workflow-automatisering</span><span class="en-only">Workflow Automations</span></h3>
-          <p class="why-desc"><span class="nl-only">Koppelt je CRM, ERP en administratie aan elkaar, zodat handmatig overtypen volledig verdwijnt.</span><span class="en-only">Connects your CRM, ERP and administration tools to eliminate manual data entry entirely.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">RAG op je eigen data</span><span class="en-only">RAG on your own data</span></p>
-          <h3 class="why-title"><span class="nl-only">RAG-pipelines</span><span class="en-only">RAG Pipelines</span></h3>
-          <p class="why-desc"><span class="nl-only">Beveiligde interne kennisbanken waarin je team je bedrijfsdocumentatie direct kan bevragen.</span><span class="en-only">Secure, internal knowledge bases that let your team query company documentation instantly.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">Interne kennisbot voor je team</span><span class="en-only">Internal knowledge bot for your team</span></p>
-          <h3 class="why-title"><span class="nl-only">Interne chatbots</span><span class="en-only">Internal Chatbots</span></h3>
-          <p class="why-desc"><span class="nl-only">Werkt nieuwe medewerkers in en beantwoordt operationele vragen zonder dat managers gestoord worden.</span><span class="en-only">Onboards new employees and answers operational questions without interrupting managers.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">AI-voicebot voor reserveringen</span><span class="en-only">AI voice bot for bookings</span></p>
-          <h3 class="why-title"><span class="nl-only">Voice-chatbots</span><span class="en-only">Voice Chatbots</span></h3>
-          <p class="why-desc"><span class="nl-only">Geautomatiseerde telefoonagents die reserveringen en intakegesprekken 24/7 afhandelen, zonder wachttijd.</span><span class="en-only">Automated phone agents that handle customer booking and intake calls 24/7 without delays.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">AI-assistent voor het MKB</span><span class="en-only">AI assistant for SMEs</span></p>
-          <h3 class="why-title"><span class="nl-only">Persoonlijke AI-assistenten</span><span class="en-only">Personal AI Assistants</span></h3>
-          <p class="why-desc"><span class="nl-only">Digitale tweelingen, getraind op specifieke functieprofielen, die concepten schrijven en je agenda beheren.</span><span class="en-only">Tailored digital twins trained on specific employee roles to handle text drafts and scheduling.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">Maatwerk-software voor het MKB</span><span class="en-only">Custom software for SMEs</span></p>
-          <h3 class="why-title"><span class="nl-only">Websites &amp; webapplicaties op maat</span><span class="en-only">Custom websites &amp; web apps</span></h3>
-          <p class="why-desc"><span class="nl-only">Maatwerk-websites, landingspagina's en interne tools — snel, responsive en SEO-klaar opgeleverd.</span><span class="en-only">Custom websites, landing pages and internal tools — delivered fast, responsive and SEO-ready.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-          <p class="cap-kw" aria-hidden="true"><span class="nl-only">Generative Engine Optimization</span><span class="en-only">Generative Engine Optimization</span></p>
-          <h3 class="why-title"><span class="nl-only">GEO — vindbaarheid in AI</span><span class="en-only">GEO — visibility in AI</span></h3>
-          <p class="why-desc"><span class="nl-only">Zorgt dat ChatGPT, Gemini en Google's AI-overzichten jouw bedrijf noemen en aanbevelen. <a href="/geo">Meer over GEO &rarr;</a></span><span class="en-only">Makes ChatGPT, Gemini and Google's AI overviews name and recommend your business. <a href="/geo">More on GEO &rarr;</a></span></p>
-        </div>
-      </div>
-    </section>
-
     <!-- ── PROCESS ── -->
     <section class="section" id="werkwijze" aria-labelledby="h-process">
       <p class="sec-label"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></p>
@@ -1255,6 +1157,187 @@
       </div>
     </section>
 
+    <!-- ── PRODUCTS (dark) ── -->
+    <div class="products-band" id="producten">
+      <div class="products-inner">
+        <p class="sec-label"><span class="nl-only">Producten</span><span class="en-only">Products</span></p>
+        <h2 class="sec-title">
+          <span class="nl-only">Eén partner.<br>Alles wat AI voor je bedrijf kan doen.</span>
+          <span class="en-only">One partner.<br>Everything AI can do for your business.</span>
+        </h2>
+        <p class="sec-sub">
+          <span class="nl-only">We beginnen waar het het meest knelt en groeien mee — van je inbox tot je vindbaarheid in AI.</span>
+          <span class="en-only">We start where it hurts most and grow from there — from your inbox to your visibility in AI.</span>
+        </p>
+
+        <div class="pt-tabs" role="tablist">
+          <button class="pt-tab active" role="tab" id="tab-automation" data-tab="automation" aria-selected="true" aria-controls="panel-automation"><span class="nl-only">Je processen</span><span class="en-only">Your processes</span></button>
+          <button class="pt-tab" role="tab" id="tab-pa" data-tab="pa" aria-selected="false" aria-controls="panel-pa"><span class="nl-only">Je inbox &amp; WhatsApp</span><span class="en-only">Your inbox &amp; WhatsApp</span></button>
+          <button class="pt-tab" role="tab" id="tab-webdev" data-tab="webdev" aria-selected="false" aria-controls="panel-webdev"><span class="nl-only">Je website &amp; software</span><span class="en-only">Your website &amp; software</span></button>
+          <button class="pt-tab" role="tab" id="tab-geo" data-tab="geo" aria-selected="false" aria-controls="panel-geo"><span class="nl-only">Gevonden in AI</span><span class="en-only">Found in AI</span></button>
+          <button class="pt-tab" role="tab" id="tab-voice" data-tab="voice" aria-selected="false" aria-controls="panel-voice"><span class="nl-only">Je telefoon</span><span class="en-only">Your phone</span></button>
+        </div>
+
+        <!-- PA -->
+        <div class="pt-panel" id="panel-pa" role="tabpanel" aria-labelledby="tab-pa" hidden>
+          <div class="pt-panel-body reveal">
+            <div>
+              <p class="pt-kw"><span class="nl-only">AI-assistent voor het MKB</span><span class="en-only">AI assistant for SMEs</span></p>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Je inbox en WhatsApp, afgehandeld</span>
+                <span class="en-only">Your inbox and WhatsApp, handled</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">Een AI-assistent in jouw schrijfstijl, gekoppeld aan je mailbox, agenda, WhatsApp en Google Drive. Hij leest mee, antwoordt, plant afspraken in en houdt je elke ochtend op de hoogte. Jij beslist, de assistent voert uit.</span>
+                <span class="en-only">An AI assistant in your own writing style, connected to your mailbox, calendar, WhatsApp and Google Drive. It reads along, replies, schedules appointments and briefs you every morning. You decide, the assistant executes.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Schrijft in jouw eigen stijl</span><span class="en-only">Writes in your own style</span></li>
+                <li><span class="nl-only">Gekoppeld aan mailbox, agenda & WhatsApp</span><span class="en-only">Connected to mailbox, calendar & WhatsApp</span></li>
+                <li><span class="nl-only">Doorzoekt en gebruikt je Google Drive</span><span class="en-only">Searches and uses your Google Drive</span></li>
+                <li><span class="nl-only">Plant afspraken in en volgt op</span><span class="en-only">Schedules appointments and follows up</span></li>
+                <li><span class="nl-only">Dagelijkse samenvatting om 08:00 · EU-servers</span><span class="en-only">Daily summary at 08:00 · EU servers</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je wensen</span><span class="en-only">depends on your needs</span></p>
+              <a href="#contact" class="pt-btn nl-only">Gratis intake →</a>
+              <a href="#contact" class="pt-btn en-only">Free consultation →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Webdev -->
+        <div class="pt-panel" id="panel-webdev" role="tabpanel" aria-labelledby="tab-webdev" hidden>
+          <div class="pt-panel-body reveal">
+            <div>
+              <p class="pt-kw"><span class="nl-only">Websites &amp; webapplicaties op maat</span><span class="en-only">Custom websites &amp; web apps</span></p>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Je website en software, gebouwd</span>
+                <span class="en-only">Your website and software, built</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">We bouwen snelle, moderne websites en webapplicaties — van landingspagina tot maatwerk-tool. Strak ontwerp, scherpe prijs, opgeleverd zonder gedoe.</span>
+                <span class="en-only">We build fast, modern websites and web applications — from landing page to custom tool. Clean design, sharp price, delivered without the hassle.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Websites & landingspagina's</span><span class="en-only">Websites & landing pages</span></li>
+                <li><span class="nl-only">Maatwerk webapplicaties</span><span class="en-only">Custom web applications</span></li>
+                <li><span class="nl-only">Snel, responsive & SEO-klaar</span><span class="en-only">Fast, responsive & SEO-ready</span></li>
+                <li><span class="nl-only">Scherpe, concurrerende projectprijs</span><span class="en-only">Sharp, competitive project pricing</span></li>
+                <li><span class="nl-only">Onderhoud & hosting mogelijk</span><span class="en-only">Maintenance & hosting available</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op maat</span><span class="en-only">Custom</span></p>
+              <p class="pt-price-note"><span class="nl-only">scherpe projectprijs — offerte binnen 48u</span><span class="en-only">competitive project pricing — quote within 48h</span></p>
+              <p class="pt-guarantee">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span><span class="nl-only">Niet tevreden na het prototype? Dan betaal je niets.</span><span class="en-only">Not satisfied after the prototype? Then you pay nothing.</span></span>
+              </p>
+              <a href="#contact" class="pt-btn nl-only">Vraag een offerte →</a>
+              <a href="#contact" class="pt-btn en-only">Request a quote →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- GEO -->
+        <div class="pt-panel" id="panel-geo" role="tabpanel" aria-labelledby="tab-geo" hidden>
+          <div class="pt-panel-body reveal">
+            <div>
+              <p class="pt-kw"><span class="nl-only">GEO — vindbaarheid in AI</span><span class="en-only">GEO — visibility in AI</span></p>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Gevonden worden in ChatGPT &amp; AI</span>
+                <span class="en-only">Get found in ChatGPT &amp; AI</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">Steeds meer klanten zoeken via ChatGPT, Gemini en Google's AI-overzichten. Met GEO — Generative Engine Optimization — vergroten we de vindbaarheid van jouw bedrijf in die LLM's, zodat je genoemd én aanbevolen wordt.</span>
+                <span class="en-only">More and more customers search via ChatGPT, Gemini and Google's AI overviews. With GEO — Generative Engine Optimization — we grow your business's visibility inside those LLMs, so you get named and recommended.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Zichtbaar in ChatGPT, Gemini & AI-zoek</span><span class="en-only">Visible in ChatGPT, Gemini & AI search</span></li>
+                <li><span class="nl-only">Content die AI-modellen citeren</span><span class="en-only">Content that AI models cite</span></li>
+                <li><span class="nl-only">Gestructureerde data & vermeldingen</span><span class="en-only">Structured data & citations</span></li>
+                <li><span class="nl-only">Meting van je AI-zichtbaarheid</span><span class="en-only">Measurement of your AI visibility</span></li>
+                <li><span class="nl-only">Doorlopende optimalisatie</span><span class="en-only">Continuous optimization</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je markt & concurrentie</span><span class="en-only">depends on your market & competition</span></p>
+              <a href="#contact" class="pt-btn nl-only">Check je AI-vindbaarheid →</a>
+              <a href="#contact" class="pt-btn en-only">Check your AI visibility →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice -->
+        <div class="pt-panel" id="panel-voice" role="tabpanel" aria-labelledby="tab-voice" hidden>
+          <div class="pt-panel-body reveal">
+            <div>
+              <p class="pt-kw"><span class="nl-only">AI-voicebot voor reserveringen</span><span class="en-only">AI voice bot for bookings</span></p>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Je telefoon neemt altijd op</span>
+                <span class="en-only">Your phone always answers</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">Een AI-voicebot die de telefoon 24/7 opneemt, reserveringen aanneemt en vragen beantwoordt. Zo loop je nooit meer een reservering mis — en dus geen klant.</span>
+                <span class="en-only">An AI voice bot that answers the phone 24/7, takes bookings and answers questions. So you never miss a reservation again — and never a customer.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Neemt de telefoon 24/7 op</span><span class="en-only">Answers the phone 24/7</span></li>
+                <li><span class="nl-only">Reserveringen direct ingepland</span><span class="en-only">Bookings scheduled instantly</span></li>
+                <li><span class="nl-only">Beantwoordt veelgestelde vragen</span><span class="en-only">Answers common questions</span></li>
+                <li><span class="nl-only">Nooit meer een gemiste oproep</span><span class="en-only">Never miss a call again</span></li>
+                <li><span class="nl-only">Koppeling met je agenda</span><span class="en-only">Connects to your calendar</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je belvolume</span><span class="en-only">depends on your call volume</span></p>
+              <a href="#contact" class="pt-btn nl-only">Plan een demo →</a>
+              <a href="#contact" class="pt-btn en-only">Book a demo →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="pt-panel active" id="panel-automation" role="tabpanel" aria-labelledby="tab-automation">
+          <div class="pt-panel-body reveal">
+            <div>
+              <p class="pt-kw"><span class="nl-only">Workflow-automatisering voor het MKB</span><span class="en-only">Workflow automation for SMEs</span></p>
+              <h3 class="sec-title" style="font-size:26px;color:white;margin-bottom:16px;">
+                <span class="nl-only">Je terugkerende taken, geautomatiseerd</span>
+                <span class="en-only">Your recurring tasks, automated</span>
+              </h3>
+              <p class="pt-desc">
+                <span class="nl-only">Automatiseer repetitieve, monotone taken — van gegevens overtypen tot rapportages en koppelingen tussen je tools. Jij houdt tijd over voor het werk dat telt.</span>
+                <span class="en-only">Automate repetitive, monotonous tasks — from re-typing data to reports and connecting your tools. You free up time for the work that matters.</span>
+              </p>
+              <ul class="pt-list">
+                <li><span class="nl-only">Automatiseer repetitieve taken</span><span class="en-only">Automate repetitive tasks</span></li>
+                <li><span class="nl-only">Koppel je tools aan elkaar</span><span class="en-only">Connect your tools together</span></li>
+                <li><span class="nl-only">Automatische rapportages</span><span class="en-only">Automated reporting</span></li>
+                <li><span class="nl-only">Minder fouten, meer tempo</span><span class="en-only">Fewer errors, more speed</span></li>
+                <li><span class="nl-only">Op maat voor jouw proces</span><span class="en-only">Tailored to your process</span></li>
+              </ul>
+            </div>
+            <div class="pt-card">
+              <p class="pt-card-label"><span class="nl-only">Investering</span><span class="en-only">Investment</span></p>
+              <p class="pt-price-big"><span class="nl-only">Op aanvraag</span><span class="en-only">On request</span></p>
+              <p class="pt-price-note"><span class="nl-only">afhankelijk van je processen</span><span class="en-only">depends on your processes</span></p>
+              <a href="#contact" class="pt-btn nl-only">Bespreek je workflow →</a>
+              <a href="#contact" class="pt-btn en-only">Discuss your workflow →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ── STATS ── -->
     <div class="stats-band">
@@ -1353,15 +1436,12 @@
             <label for="f-interest"><span class="nl-only">Interesseert mij</span><span class="en-only">I'm interested in</span></label>
             <select id="f-interest" name="interest" required>
               <option value="" disabled selected></option>
-              <!-- Values are pinned by the intake_interest_valid CHECK constraint in
-                   20260804120000_intake_submissions.sql. Labels may change freely;
-                   adding a value needs a migration first or the insert fails. -->
-              <option value="automation" data-nl="Workflow-automatisering" data-en="Workflow automation">Workflow-automatisering</option>
-              <option value="pa" data-nl="Persoonlijke AI-assistent" data-en="Personal AI assistant">Persoonlijke AI-assistent</option>
-              <option value="voice" data-nl="Voice-chatbot voor de telefoon" data-en="Voice chatbot for the phone">Voice-chatbot voor de telefoon</option>
+              <option value="pa" data-nl="WhatsApp PA: AI-assistent" data-en="WhatsApp PA: AI assistant">WhatsApp PA: AI-assistent</option>
               <option value="webdev" data-nl="Website of webapplicatie" data-en="Website or web app">Website of webapplicatie</option>
               <option value="geo" data-nl="GEO: vindbaarheid in AI" data-en="GEO: findability in AI">GEO: vindbaarheid in AI</option>
-              <option value="unknown" data-nl="Iets anders (RAG, interne chatbot, …)" data-en="Something else (RAG, internal chatbot, …)">Iets anders (RAG, interne chatbot, …)</option>
+              <option value="voice" data-nl="Voice-assistent voor reserveringen" data-en="Voice assistant for bookings">Voice-assistent voor reserveringen</option>
+              <option value="automation" data-nl="Workflow-automatisering" data-en="Workflow automation">Workflow-automatisering</option>
+              <option value="unknown" data-nl="Weet ik nog niet" data-en="Not sure yet">Weet ik nog niet</option>
             </select>
           </div>
           <div class="f-row">
@@ -1411,8 +1491,8 @@
           <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
 
           <button type="submit" class="f-submit">
-            <span class="nl-only">Plan een gratis kennismaking</span>
-            <span class="en-only">Book a free intro call</span>
+            <span class="nl-only">Gratis intake aanvragen</span>
+            <span class="en-only">Request free consultation</span>
           </button>
         </form>
       </div>
@@ -1425,6 +1505,7 @@
     <div class="footer-inner">
       <span class="footer-logo">cadans.</span>
       <ul class="footer-links">
+        <li><a href="#producten"><span class="nl-only">Producten</span><span class="en-only">Products</span></a></li>
         <li><a href="/privacy">Privacy</a></li>
         <li><a href="#"><span class="nl-only">Voorwaarden</span><span class="en-only">Terms</span></a></li>
       </ul>
