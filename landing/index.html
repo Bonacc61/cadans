@@ -258,8 +258,31 @@
       gap: 60px;
       align-items: center;
       min-height: calc(90vh - var(--nav-h));
-      background: radial-gradient(1100px 780px at 72% 42%, #ffffff 0%, #f5f2ec 66%, #efece4 100%);
       isolation: isolate;
+    }
+
+    /* The glow lives on its own layer that bleeds past the hero on all four
+       sides. Painted as the hero's own background it was clipped to the centred
+       1180px box while still mid-gradient, and since its outer stop was darker
+       than the page canvas that clip drew a visible rectangle down both sides.
+       The negative insets matter as much as the width: clip the layer anywhere
+       the gradient has not yet reached its transparent stop and the seam simply
+       moves to that edge. Relies on body { overflow-x: hidden } to absorb the
+       horizontal bleed, and on .hero being position: relative so the layer
+       resolves against the hero rather than the viewport. */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -140px;
+      bottom: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      background: radial-gradient(1100px 780px at 68% 42%,
+                  #ffffff 0%,
+                  rgba(255, 255, 255, 0.55) 40%,
+                  rgba(246, 244, 240, 0) 72%);
+      pointer-events: none;
     }
 
     .hero > .hero-content { position: relative; z-index: 1; max-width: 760px; }
