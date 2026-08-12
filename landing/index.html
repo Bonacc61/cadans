@@ -35,6 +35,14 @@
       },
       {
         "@type": "Offer",
+        "description": "Introductietarief per geautomatiseerd werkproces, exclusief btw. Daarna €1.350.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "950",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false,
+          "unitText": "per geautomatiseerd werkproces"
+        },
         "itemOffered": {
           "@type": "Service",
           "name": "Workflow-automatisering",
@@ -1025,17 +1033,109 @@
       to   { opacity: 1; transform: none; }
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 920px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; padding: 48px 24px 40px; gap: 44px; }
-      .process-grid { grid-template-columns: 1fr; border-radius: 10px; }
-      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
-      .process-step:last-child { border-bottom: none; }
-      .pt-panel-body { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
-      #capaciteiten .why-item:last-child { grid-column: span 2; }
-      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    /* ── Offer / price ── */
+    .offer {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 44px;
+    }
+
+    .offer-list {
+      background: var(--canvas-white);
+      list-style: none;
+      padding: 38px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .offer-list li {
+      position: relative;
+      padding-left: 27px;
+      font-size: 15.5px;
+      line-height: 1.55;
+      color: var(--ink-mid);
+    }
+    .offer-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--indigo);
+    }
+
+    .offer-card {
+      background: var(--ink);
+      color: var(--canvas);
+      padding: 38px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .offer-card-label {
+      font-family: var(--f-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(246, 244, 240, 0.5);
+      margin-bottom: 14px;
+    }
+
+    .offer-price {
+      font-family: var(--f-disp);
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .offer-note {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(246, 244, 240, 0.72);
+    }
+
+    .offer-fine {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(246, 244, 240, 0.6);
+      margin-top: 6px;
+    }
+
+    .offer-btn {
+      display: inline-block;
+      margin-top: 26px;
+      background: var(--canvas);
+      color: var(--ink);
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+      padding: 12px 18px;
+      border-radius: 8px;
+      transition: background 160ms;
+    }
+    .offer-btn:hover { background: #ffffff; }
+
+    /* Body copy, not an eyebrow: --ink-faint measures 2.18:1 here, and this is
+       the sentence that keeps the price from over-promising, so it gets the
+       readable tone. */
+    .offer-scope {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-mid);
+      max-width: 78ch;
+      margin-top: 20px;
     }
 
     /* Keyword line above each capability title — carries the search terms the
@@ -1049,10 +1149,26 @@
       margin-bottom: 7px;
     }
 
-    /* The nav CTA plus the wider "Capaciteiten" label stop fitting before the
-       phone breakpoint — hand over to the hamburger earlier so the bar can't
-       overflow. */
-    @media (max-width: 760px) {
+    /* ── Responsive ── */
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 48px 24px 40px; gap: 44px; }
+      .process-grid { grid-template-columns: 1fr; border-radius: 10px; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .process-step:last-child { border-bottom: none; }
+      .pt-panel-body { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      #capaciteiten .why-item:last-child { grid-column: span 2; }
+      .offer { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* Five nav links plus the CTA stop fitting well above the phone breakpoint.
+       800px is set by the English labels, which run longer than the Dutch:
+       below it "How it works" and "Why cadans" wrap and collide with the
+       language toggle. Adding a nav item means re-measuring this number just
+       above the breakpoint, in English. */
+    @media (max-width: 800px) {
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .nav-toggle { display: flex; }
@@ -1087,6 +1203,7 @@
         <nav aria-label="Hoofdmenu">
           <ul class="nav-links">
             <li><a href="#capaciteiten"><span class="nl-only">Capaciteiten</span><span class="en-only">Capabilities</span></a></li>
+            <li><a href="#prijs"><span class="nl-only">Prijs</span><span class="en-only">Pricing</span></a></li>
             <li><a href="#werkwijze"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></a></li>
             <li><a href="#waarom"><span class="nl-only">Waarom cadans</span><span class="en-only">Why cadans</span></a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1108,6 +1225,7 @@
     </div>
     <nav class="mobile-menu" id="mobile-menu" aria-label="Mobiel menu" aria-hidden="true">
       <a href="#capaciteiten"><span class="nl-only">Capaciteiten</span><span class="en-only">Capabilities</span></a>
+      <a href="#prijs"><span class="nl-only">Prijs</span><span class="en-only">Pricing</span></a>
       <a href="#werkwijze"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></a>
       <a href="#waarom"><span class="nl-only">Waarom cadans</span><span class="en-only">Why cadans</span></a>
       <a href="#contact">Contact</a>
@@ -1237,6 +1355,44 @@
           <p class="why-desc"><span class="nl-only">Zorgt dat ChatGPT, Gemini en Google's AI-overzichten jouw bedrijf noemen en aanbevelen. <a href="/geo">Meer over GEO &rarr;</a></span><span class="en-only">Makes ChatGPT, Gemini and Google's AI overviews name and recommend your business. <a href="/geo">More on GEO &rarr;</a></span></p>
         </div>
       </div>
+    </section>
+
+    <!-- ── OFFER / PRICE ── -->
+    <section class="section" id="prijs" aria-labelledby="h-offer">
+      <p class="sec-label"><span class="nl-only">Wat het kost</span><span class="en-only">What it costs</span></p>
+      <h2 class="sec-title" id="h-offer">
+        <span class="nl-only">Eén werkproces geautomatiseerd,<br>voor een vaste prijs.</span>
+        <span class="en-only">One work process automated,<br>for a fixed price.</span>
+      </h2>
+      <p class="sec-sub">
+        <span class="nl-only">Je weet vooraf wat het kost. We bakenen samen één proces af, bouwen het en koppelen het aan de software die je al gebruikt.</span>
+        <span class="en-only">You know the cost up front. We scope one process together, build it, and connect it to the software you already run.</span>
+      </p>
+      <div class="offer">
+        <ul class="offer-list">
+          <li><span class="nl-only">Eén afgebakend werkproces, van intake tot live</span><span class="en-only">One scoped work process, from intake to live</span></li>
+          <li><span class="nl-only">We bakenen de scope af in de intake — daarna geen nacalculatie</span><span class="en-only">We scope it in the intake — no overruns billed after that</span></li>
+          <li><span class="nl-only">Gekoppeld aan de tools die je al gebruikt</span><span class="en-only">Connected to the tools you already use</span></li>
+          <li><span class="nl-only">Jij hoeft zelf niets technisch te doen</span><span class="en-only">Nothing technical required from you</span></li>
+        </ul>
+        <div class="offer-card">
+          <p class="offer-card-label"><span class="nl-only">Per automatisering</span><span class="en-only">Per automation</span></p>
+          <p class="offer-price">&euro;950</p>
+          <p class="offer-note">
+            <span class="nl-only">introductietarief &middot; daarna &euro;1.350</span>
+            <span class="en-only">introductory rate &middot; &euro;1,350 thereafter</span>
+          </p>
+          <p class="offer-fine"><span class="nl-only">excl. btw</span><span class="en-only">excl. VAT</span></p>
+          <a href="#contact" class="offer-btn">
+            <span class="nl-only">Plan een gratis kennismaking &rarr;</span>
+            <span class="en-only">Book a free intro call &rarr;</span>
+          </a>
+        </div>
+      </div>
+      <p class="offer-scope">
+        <span class="nl-only">Dit tarief geldt per geautomatiseerd werkproces. Interne chatbots, voice-chatbots, persoonlijke AI-assistenten, RAG-pipelines, maatwerk-software, websites en GEO hebben elk een eigen scope en dus een eigen prijs — die bespreken we in de kennismaking.</span>
+        <span class="en-only">This rate is per automated work process. Internal chatbots, voice chatbots, personal AI assistants, RAG pipelines, custom software, websites and GEO each have their own scope and their own price — we cover those in the intro call.</span>
+      </p>
     </section>
 
     <!-- ── PROCESS ── -->
