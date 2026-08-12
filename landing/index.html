@@ -92,6 +92,63 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "nl",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat als mijn proces te complex is voor één week?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dan splitsen we het op. Complexe processen bestaan uit kleinere stappen — we automatiseren de stap met de meeste impact eerst. Werkt dat, dan pakken we de volgende in een volgende week. Blijkt in de intake dat het echt niet in één week past, dan zeggen we dat vóór we beginnen, niet halverwege."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Moet ik technische kennis hebben?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. Je vertelt wat je doet en waar het knelt; wij bouwen het en koppelen het aan de software die je al gebruikt. Je hoeft niets te installeren — het enige wat we van je vragen is toegang tot de systemen die we koppelen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wat als het niet bevalt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Op woensdag zie je het prototype draaien op je eigen data. Vind je het niets, dan stoppen we daar en krijg je geen factuur. Geen kleine lettertjes en geen uren die alsnog doorbelast worden."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wat kost het na het introductietarief?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dan is het €1.350 per geautomatiseerd werkproces, exclusief btw. De andere diensten — chatbots, voice, assistenten, RAG, maatwerk-software, websites en GEO — hebben een eigen scope en dus een eigen prijs; die krijg je in de kennismaking te horen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waar staat mijn data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In de EU. Geen Amerikaanse cloud, en klantgesprekken worden niet bewaard voor modeltraining. Wat er precies verwerkt wordt en waarom, staat in het privacybeleid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Werken jullie ook op locatie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De intake doen we graag persoonlijk — dat scheelt een hoop heen en weer. Het bouwen gaat remote. Oplevering kan weer op locatie als je dat prettiger vindt."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
@@ -122,6 +179,10 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
+
+    /* Every in-page link has to clear the sticky nav, or the heading it jumps
+       to lands behind the bar. --nav-h plus a little breathing room. */
+    :target, [id] { scroll-margin-top: calc(var(--nav-h) + 18px); }
     body {
       font-family: var(--f-body);
       background: var(--canvas);
@@ -513,181 +574,23 @@
       color: var(--ink-mid);
     }
 
-    /* ── Products (dark) ── */
-    .products-band {
-      background: #0D0F14;
-      padding: 80px 0;
-    }
 
-    .products-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 28px;
-    }
 
-    .products-band .sec-label { color: rgba(255,255,255,0.25); }
-    .products-band .sec-label::after { background: rgba(255,255,255,0.1); }
-    .products-band .sec-title { color: white; }
-    .products-band .sec-sub { color: rgba(255,255,255,0.55); }
 
-    .pt-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin: 40px 0 48px;
-    }
 
-    .pt-tab {
-      font-family: var(--f-body);
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 11px 22px;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.38);
-      cursor: pointer;
-      letter-spacing: 0.01em;
-      position: relative;
-      transition: color 140ms;
-    }
-    .pt-tab::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; left: 0; right: 0;
-      height: 2px;
-      background: var(--indigo);
-      opacity: 0;
-      transition: opacity 140ms;
-    }
-    .pt-tab.active { color: white; }
-    .pt-tab.active::after { opacity: 1; }
-    .pt-tab:hover { color: rgba(255,255,255,0.75); }
 
-    .pt-panel { display: none; }
-    .pt-panel.active { display: block; }
-    .pt-panel[hidden] { display: none; }
 
-    .pt-panel-body {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 56px;
-      align-items: start;
-    }
 
-    .pt-kw {
-      font-family: var(--f-mono);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: #2DD4BF;
-      margin-bottom: 10px;
-    }
-    .pt-desc {
-      font-size: 16px;
-      line-height: 1.72;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 28px;
-    }
 
-    .pt-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
 
-    .pt-list li {
-      font-size: 14.5px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.7);
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
-    }
 
-    .pt-list li::before {
-      content: '';
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--teal);
-      flex-shrink: 0;
-      margin-top: 8px;
-    }
 
-    .pt-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 14px;
-      padding: 28px;
-    }
 
-    .pt-card-label {
-      font-family: var(--f-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 14px;
-    }
 
-    .pt-price-big {
-      font-family: var(--f-disp);
-      font-size: 36px;
-      font-weight: 800;
-      color: white;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
 
-    .pt-price-note {
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.38);
-      margin-bottom: 20px;
-    }
 
-    .pt-price-mo {
-      font-family: var(--f-disp);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--teal);
-      margin-bottom: 4px;
-    }
 
-    .pt-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-family: var(--f-body);
-      font-size: 14.5px;
-      font-weight: 600;
-      background: var(--indigo);
-      color: white;
-      padding: 13px;
-      border-radius: 9px;
-      text-decoration: none;
-      margin-top: 22px;
-      transition: background 140ms;
-    }
-    .pt-btn:hover { background: var(--indigo-dk); }
 
-    .pt-guarantee {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-size: 12.5px;
-      line-height: 1.5;
-      font-weight: 500;
-      color: var(--teal);
-      background: rgba(13,148,136,0.10);
-      border: 1px solid rgba(13,148,136,0.28);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-top: 18px;
-    }
-    .pt-guarantee svg { flex-shrink: 0; margin-top: 1px; }
 
     /* ── Stats grid ── */
     .stats-band {
@@ -989,6 +892,7 @@
     }
 
     .footer-links {
+      flex-wrap: wrap;
       display: flex;
       gap: 20px;
       list-style: none;
@@ -1032,6 +936,64 @@
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: none; }
     }
+
+    /* ── FAQ ── */
+    .faq {
+      border-top: 1px solid var(--border);
+      margin-top: 44px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 22px 44px 22px 0;
+      position: relative;
+      font-family: var(--f-disp);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    /* The question is a heading so screen-reader users can navigate the FAQ the
+       same way they navigate every other section here. It inherits summary's
+       type; these resets stop it adding a second box. */
+    .faq-q {
+      display: inline;
+      font: inherit;
+      color: inherit;
+      margin: 0;
+    }
+
+    /* Plus sign that becomes a minus when open — drawn in CSS so there is no
+       icon to keep in sync with the open state. */
+    .faq-item summary::before,
+    .faq-item summary::after {
+      content: '';
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      background: var(--ink-mid);
+      transition: transform 200ms var(--ease), background 160ms;
+    }
+    .faq-item summary::before { width: 14px; height: 2px; margin-top: -1px; }
+    .faq-item summary::after  { width: 2px; height: 14px; margin-top: -7px; right: 10px; }
+    .faq-item[open] summary::after { transform: rotate(90deg); }
+    .faq-item summary:hover::before,
+    .faq-item summary:hover::after { background: var(--indigo); }
+
+    .faq-item p {
+      padding: 0 44px 24px 0;
+      font-size: 15.5px;
+      line-height: 1.68;
+      color: var(--ink-mid);
+      max-width: 76ch;
+    }
+    .faq-item p a { color: var(--indigo); }
 
     /* ── Offer / price ── */
     .offer {
@@ -1112,9 +1074,23 @@
       margin-top: 6px;
     }
 
+    .offer-guarantee {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(246, 244, 240, 0.16);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 600;
+      color: var(--canvas);
+    }
+    .offer-guarantee svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 1px; }
+
     .offer-btn {
       display: inline-block;
-      margin-top: 26px;
+      margin-top: 22px;
       background: var(--canvas);
       color: var(--ink);
       font-size: 14.5px;
@@ -1149,13 +1125,23 @@
       margin-bottom: 7px;
     }
 
+    /* Everything that moves on this page, off in one place. The reveal list
+       grew by seven elements when the offer and FAQ joined it. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-content > * { animation: none; }
+      .ticker-track { animation: none; }
+      .faq-item summary::before,
+      .faq-item summary::after { transition: none; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 920px) {
       .hero { grid-template-columns: 1fr; min-height: auto; padding: 48px 24px 40px; gap: 44px; }
       .process-grid { grid-template-columns: 1fr; border-radius: 10px; }
       .process-step { border-right: none; border-bottom: 1px solid var(--border); }
       .process-step:last-child { border-bottom: none; }
-      .pt-panel-body { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       #capaciteiten .why-item:last-child { grid-column: span 2; }
@@ -1186,10 +1172,7 @@
       #capaciteiten .why-item:last-child { grid-column: auto; }
       .f-row { grid-template-columns: 1fr; }
       .section { padding: 60px 20px; }
-      .products-inner { padding: 0 20px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
-      .pt-tabs { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-      .pt-tabs::-webkit-scrollbar { display: none; }
     }
   </style>
 </head>
@@ -1206,6 +1189,7 @@
             <li><a href="#prijs"><span class="nl-only">Prijs</span><span class="en-only">Pricing</span></a></li>
             <li><a href="#werkwijze"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></a></li>
             <li><a href="#waarom"><span class="nl-only">Waarom cadans</span><span class="en-only">Why cadans</span></a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -1228,6 +1212,7 @@
       <a href="#prijs"><span class="nl-only">Prijs</span><span class="en-only">Pricing</span></a>
       <a href="#werkwijze"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></a>
       <a href="#waarom"><span class="nl-only">Waarom cadans</span><span class="en-only">Why cadans</span></a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1361,19 +1346,19 @@
     <section class="section" id="prijs" aria-labelledby="h-offer">
       <p class="sec-label"><span class="nl-only">Wat het kost</span><span class="en-only">What it costs</span></p>
       <h2 class="sec-title" id="h-offer">
-        <span class="nl-only">Eén werkproces geautomatiseerd,<br>voor een vaste prijs.</span>
-        <span class="en-only">One work process automated,<br>for a fixed price.</span>
+        <span class="nl-only">Eén werkproces geautomatiseerd,<br>in vijf werkdagen.</span>
+        <span class="en-only">One work process automated,<br>in five working days.</span>
       </h2>
       <p class="sec-sub">
-        <span class="nl-only">Je weet vooraf wat het kost. We bakenen samen één proces af, bouwen het en koppelen het aan de software die je al gebruikt.</span>
-        <span class="en-only">You know the cost up front. We scope one process together, build it, and connect it to the software you already run.</span>
+        <span class="nl-only">Je weet vooraf wat het kost en wanneer het klaar is. Woensdag zie je het werken op je eigen data, en op dat moment beslis jij of het doorgaat.</span>
+        <span class="en-only">You know what it costs and when it's done, up front. Wednesday you see it working on your own data, and that is the moment you decide whether it goes ahead.</span>
       </p>
       <div class="offer">
         <ul class="offer-list">
-          <li><span class="nl-only">Eén afgebakend werkproces, van intake tot live</span><span class="en-only">One scoped work process, from intake to live</span></li>
+          <li><span class="nl-only">Maandag intake, vrijdag live — één werkweek</span><span class="en-only">Intake Monday, live Friday — one working week</span></li>
+          <li><span class="nl-only">Woensdag zie je het prototype draaien op je eigen data</span><span class="en-only">Wednesday you see the prototype running on your own data</span></li>
           <li><span class="nl-only">We bakenen de scope af in de intake — daarna geen nacalculatie</span><span class="en-only">We scope it in the intake — no overruns billed after that</span></li>
-          <li><span class="nl-only">Gekoppeld aan de tools die je al gebruikt</span><span class="en-only">Connected to the tools you already use</span></li>
-          <li><span class="nl-only">Jij hoeft zelf niets technisch te doen</span><span class="en-only">Nothing technical required from you</span></li>
+          <li><span class="nl-only">Gekoppeld aan de tools die je al gebruikt — jij regelt alleen de toegang, en daarmee loopt de week</span><span class="en-only">Connected to the tools you already use — you only arrange access, and that starts the week</span></li>
         </ul>
         <div class="offer-card">
           <p class="offer-card-label"><span class="nl-only">Per automatisering</span><span class="en-only">Per automation</span></p>
@@ -1382,10 +1367,14 @@
             <span class="nl-only">introductietarief &middot; daarna &euro;1.350</span>
             <span class="en-only">introductory rate &middot; &euro;1,350 thereafter</span>
           </p>
-          <p class="offer-fine"><span class="nl-only">excl. btw</span><span class="en-only">excl. VAT</span></p>
+          <p class="offer-fine"><span class="nl-only">excl. btw &middot; 5 werkdagen vanaf de intake</span><span class="en-only">excl. VAT &middot; 5 working days from intake</span></p>
+          <p class="offer-guarantee">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span><span class="nl-only">Niets voor je op woensdag? Dan geen factuur.</span><span class="en-only">Not for you on Wednesday? Then no invoice.</span></span>
+          </p>
           <a href="#contact" class="offer-btn">
-            <span class="nl-only">Plan een gratis kennismaking &rarr;</span>
-            <span class="en-only">Book a free intro call &rarr;</span>
+            <span class="nl-only">Gratis kennismaking &rarr;</span>
+            <span class="en-only">Free intro call &rarr;</span>
           </a>
         </div>
       </div>
@@ -1399,36 +1388,36 @@
     <section class="section" id="werkwijze" aria-labelledby="h-process">
       <p class="sec-label"><span class="nl-only">Werkwijze</span><span class="en-only">How it works</span></p>
       <h2 class="sec-title" id="h-process">
-        <span class="nl-only">Van intake tot resultaat.</span>
-        <span class="en-only">From intake to result.</span>
+        <span class="nl-only">Maandag intake.<br>Vrijdag live.</span>
+        <span class="en-only">Intake Monday.<br>Live Friday.</span>
       </h2>
       <p class="sec-sub">
-        <span class="nl-only">Geen maandenlange IT-trajecten. Geen technische kennis vereist.</span>
-        <span class="en-only">No months-long IT projects. No technical knowledge required.</span>
+        <span class="nl-only">Geen maandenlange IT-trajecten. Eén werkweek, één geautomatiseerd proces. Geen technische kennis vereist.</span>
+        <span class="en-only">No months-long IT projects. One working week, one automated process. No technical knowledge required.</span>
       </p>
       <div class="process-grid">
         <div class="process-step">
           <div class="p-num">01</div>
-          <h3 class="p-title"><span class="nl-only">Intake & advies</span><span class="en-only">Discovery & advice</span></h3>
+          <h3 class="p-title"><span class="nl-only">Maandag &middot; intake &amp; scope</span><span class="en-only">Monday &middot; intake &amp; scope</span></h3>
           <p class="p-body">
-            <span class="nl-only">We leren je bedrijf kennen en bepalen samen welke oplossing het meeste oplevert — assistent, website, automatisering, GEO of voicebot.</span>
-            <span class="en-only">We get to know your business and decide together which solution delivers the most — assistant, website, automation, GEO or voice bot.</span>
+            <span class="nl-only">Eén uur samen door je processen. We kiezen het proces dat je de meeste handmatige uren kost en bakenen het af. Je hoeft je niet voor te bereiden; we spreken af welke systemen we koppelen en jij regelt daar de toegang voor.</span>
+            <span class="en-only">One hour through your processes together. We pick the one costing you the most manual hours and scope it. No prep needed for the call; we agree which systems we connect and you arrange access to them.</span>
           </p>
         </div>
         <div class="process-step">
           <div class="p-num">02</div>
-          <h3 class="p-title"><span class="nl-only">Bouwen & koppelen</span><span class="en-only">Build & integrate</span></h3>
+          <h3 class="p-title"><span class="nl-only">Woensdag &middot; werkend prototype</span><span class="en-only">Wednesday &middot; working prototype</span></h3>
           <p class="p-body">
-            <span class="nl-only">We bouwen en richten je oplossing op maat in en koppelen hem aan je bestaande tools. Jij hoeft niets technisch te doen.</span>
-            <span class="en-only">We build and configure your solution and connect it to your existing tools. Nothing technical required from you.</span>
+            <span class="nl-only">Je ziet het draaien op je eigen data — niet op een demo. Niets voor je? Dan stopt het hier en krijg je geen factuur.</span>
+            <span class="en-only">You see it running on your own data — not on a demo. Not for you? It stops here and you get no invoice.</span>
           </p>
         </div>
         <div class="process-step">
           <div class="p-num">03</div>
-          <h3 class="p-title"><span class="nl-only">Live & meegroeien</span><span class="en-only">Live & grow</span></h3>
+          <h3 class="p-title"><span class="nl-only">Vrijdag &middot; live</span><span class="en-only">Friday &middot; live</span></h3>
           <p class="p-body">
-            <span class="nl-only">Je oplossing gaat live en we sturen bij tot ze het beloofde resultaat levert — daarna blijven we betrokken en groeien we mee.</span>
-            <span class="en-only">Your solution goes live and we tune it until it delivers the promised result — then we stay involved and grow with you.</span>
+            <span class="nl-only">We koppelen het aan je bestaande software en zetten het in productie. Daarna blijven we bereikbaar en sturen we bij waar nodig.</span>
+            <span class="en-only">We connect it to your existing software and put it into production. After that we stay reachable and tune where needed.</span>
           </p>
         </div>
       </div>
@@ -1465,8 +1454,8 @@
         <span class="en-only">Built for<br>the Dutch entrepreneur.</span>
       </h2>
       <p class="sec-sub">
-        <span class="nl-only">Geen generieke AI-tool. Een partner die jouw branche kent, Nederlands spreekt en privacywetgeving respecteert.</span>
-        <span class="en-only">Not a generic AI tool. A partner that knows your sector, speaks Dutch, and respects privacy law.</span>
+        <span class="nl-only">Geen generieke AI-tool en geen abonnement op software die je zelf mag uitzoeken. Iemand die bouwt, oplevert en eerlijk zegt wat niet hoeft.</span>
+        <span class="en-only">Not a generic AI tool, and not a subscription to software you have to figure out yourself. Someone who builds it, ships it, and says honestly what you don't need.</span>
       </p>
       <div class="why-grid">
         <div class="why-item why-row">
@@ -1475,19 +1464,19 @@
           <p class="why-desc"><span class="nl-only">Alle data in de EU. Geen Amerikaanse cloud. Klantgesprekken niet bewaard voor modeltraining.</span><span class="en-only">All data in the EU. No American cloud. Customer conversations not retained for model training.</span></p>
         </div>
         <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3 class="why-title"><span class="nl-only">Nederlands van nature</span><span class="en-only">Naturally Dutch</span></h3>
-          <p class="why-desc"><span class="nl-only">Communiceert in jouw toon en taal. Van formeel tot informeel, afgestemd op jouw klanten.</span><span class="en-only">Communicates in your tone and language. From formal to informal, tuned to your customers.</span></p>
-        </div>
-        <div class="why-item why-row">
-          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <h3 class="why-title"><span class="nl-only">Consulting-kwaliteit</span><span class="en-only">Consulting quality</span></h3>
-          <p class="why-desc"><span class="nl-only">Geen self-service SaaS. Wij richten in, configureren en blijven betrokken met maandelijkse check-in.</span><span class="en-only">No self-service SaaS. We set up, configure, and stay involved with monthly check-in.</span></p>
+          <div class="why-dot"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
+          <h3 class="why-title"><span class="nl-only">Jij blijft aan de knoppen</span><span class="en-only">You keep the controls</span></h3>
+          <p class="why-desc"><span class="nl-only">We automatiseren de stap, niet de beslissing. Waar een oordeel nodig is, bereidt het systeem voor en teken jij af.</span><span class="en-only">We automate the step, not the decision. Where judgement is needed, the system prepares and you sign off.</span></p>
         </div>
         <div class="why-item why-row">
           <div class="why-dot"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <h3 class="why-title"><span class="nl-only">Altijd beschikbaar</span><span class="en-only">Always available</span></h3>
-          <p class="why-desc"><span class="nl-only">24/7, ook 's avonds en in het weekend. Je assistent slaapt nooit en vergeet nooit.</span><span class="en-only">24/7, evenings and weekends included. Your assistant never sleeps and never forgets.</span></p>
+          <h3 class="why-title"><span class="nl-only">Tijd terug, niet minder mensen</span><span class="en-only">Time back, not fewer people</span></h3>
+          <p class="why-desc"><span class="nl-only">Automatiseren gaat hier over uren vrijmaken voor het werk dat je team wél wil doen. Niet over het vervangen van je team.</span><span class="en-only">Automating here is about freeing hours for the work your team actually wants to do. Not about replacing your team.</span></p>
+        </div>
+        <div class="why-item why-row">
+          <div class="why-dot"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3 class="why-title"><span class="nl-only">We zeggen ook wat níet moet</span><span class="en-only">We'll also say what shouldn't be</span></h3>
+          <p class="why-desc"><span class="nl-only">Sommige processen kún je automatiseren maar moet je niet automatiseren. Als dat zo is, hoor je dat in de intake — niet nadat je betaald hebt.</span><span class="en-only">Some processes can be automated but shouldn't be. When that's the case, you hear it in the intake — not after you've paid.</span></p>
         </div>
         <div class="why-item why-row">
           <div class="why-dot"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
@@ -1502,18 +1491,53 @@
       </div>
     </section>
 
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq" aria-labelledby="h-faq">
+      <p class="sec-label"><span class="nl-only">Veelgestelde vragen</span><span class="en-only">Frequently asked</span></p>
+      <h2 class="sec-title" id="h-faq">
+        <span class="nl-only">Nog vragen?</span>
+        <span class="en-only">Still wondering?</span>
+      </h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary><h3 class="faq-q"><span class="nl-only">Wat als mijn proces te complex is voor één week?</span><span class="en-only">What if my process is too complex for one week?</span></h3></summary>
+          <p><span class="nl-only">Dan splitsen we het op. Complexe processen bestaan uit kleinere stappen — we automatiseren de stap met de meeste impact eerst. Werkt dat, dan pakken we de volgende in een volgende week. Blijkt in de intake dat het echt niet in één week past, dan zeggen we dat vóór we beginnen, niet halverwege.</span><span class="en-only">Then we split it. Complex processes are made of smaller steps — we automate the highest-impact step first. If that works, we take the next one the following week. If the intake shows it genuinely doesn't fit in a week, we say so before we start, not halfway through.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><h3 class="faq-q"><span class="nl-only">Moet ik technische kennis hebben?</span><span class="en-only">Do I need technical knowledge?</span></h3></summary>
+          <p><span class="nl-only">Nee. Je vertelt wat je doet en waar het knelt; wij bouwen het en koppelen het aan de software die je al gebruikt. Je hoeft niets te installeren — het enige wat we van je vragen is toegang tot de systemen die we koppelen.</span><span class="en-only">No. You tell us what you do and where it hurts; we build it and connect it to the software you already run. Nothing to install — the only thing we need from you is access to the systems we connect.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><h3 class="faq-q"><span class="nl-only">Wat als het niet bevalt?</span><span class="en-only">What if I don't like it?</span></h3></summary>
+          <p><span class="nl-only">Op woensdag zie je het prototype draaien op je eigen data. Vind je het niets, dan stoppen we daar en krijg je geen factuur. Geen kleine lettertjes en geen uren die alsnog doorbelast worden.</span><span class="en-only">On Wednesday you see the prototype running on your own data. If it's not for you, we stop there and you get no invoice. No fine print, and no hours billed after the fact.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><h3 class="faq-q"><span class="nl-only">Wat kost het na het introductietarief?</span><span class="en-only">What does it cost after the introductory rate?</span></h3></summary>
+          <p><span class="nl-only">Dan is het €1.350 per geautomatiseerd werkproces, exclusief btw. De andere diensten — chatbots, voice, assistenten, RAG, maatwerk-software, websites en GEO — hebben een eigen scope en dus een eigen prijs; die krijg je in de kennismaking te horen.</span><span class="en-only">Then it's €1,350 per automated work process, excl. VAT. The other services — chatbots, voice, assistants, RAG, custom software, websites and GEO — have their own scope and their own price, which you'll hear in the intro call.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><h3 class="faq-q"><span class="nl-only">Waar staat mijn data?</span><span class="en-only">Where does my data live?</span></h3></summary>
+          <p><span class="nl-only">In de EU. Geen Amerikaanse cloud, en klantgesprekken worden niet bewaard voor modeltraining. Wat er precies verwerkt wordt en waarom, staat in het <a href="/privacy">privacybeleid</a>.</span><span class="en-only">In the EU. No American cloud, and customer conversations are not retained for model training. What gets processed and why is set out in the <a href="/privacy">privacy policy</a>.</span></p>
+        </details>
+        <details class="faq-item">
+          <summary><h3 class="faq-q"><span class="nl-only">Werken jullie ook op locatie?</span><span class="en-only">Do you work on-site?</span></h3></summary>
+          <p><span class="nl-only">De intake doen we graag persoonlijk — dat scheelt een hoop heen en weer. Het bouwen gaat remote. Oplevering kan weer op locatie als je dat prettiger vindt.</span><span class="en-only">We prefer to do the intake in person — it saves a lot of back and forth. Building happens remotely. Delivery can be on-site again if you prefer.</span></p>
+        </details>
+      </div>
+    </section>
+
     <!-- ── CONTACT ── -->
     <div class="contact-band" id="contact">
       <div class="contact-inner">
         <div class="contact-copy">
           <p class="sec-label"><span class="nl-only">Contact</span><span class="en-only">Contact</span></p>
           <h2 class="sec-title">
-            <span class="nl-only">Klaar om te ontdekken<br>wat AI voor jou kan doen?</span>
-            <span class="en-only">Ready to discover<br>what AI can do for you?</span>
+            <span class="nl-only">Welk proces kost je<br>de meeste tijd?</span>
+            <span class="en-only">Which process costs you<br>the most time?</span>
           </h2>
           <p>
-            <span class="nl-only">Plan een gratis intake van 30 minuten. We bespreken jouw situatie en laten zien wat een Cadans-assistent kan betekenen — zonder verplichtingen.</span>
-            <span class="en-only">Schedule a free 30-minute intake. We'll discuss your situation and show what a Cadans assistant can do — no obligations.</span>
+            <span class="nl-only">Plan een gratis kennismaking van 30 minuten. We lopen door je processen en ik zeg eerlijk of automatiseren zin heeft — ook als het antwoord nee is. Dit is nog niet de intake van maandag; daar begint pas de betaalde week.</span>
+            <span class="en-only">Book a free 30-minute intro call. We walk through your processes and I'll tell you honestly whether automating makes sense — including when the answer is no. This isn't the Monday intake yet; that's where the paid week starts.</span>
           </p>
           <div class="contact-items">
             <div class="contact-item">
@@ -1605,7 +1629,8 @@
       <span class="footer-logo">cadans.</span>
       <ul class="footer-links">
         <li><a href="/privacy">Privacy</a></li>
-        <li><a href="#"><span class="nl-only">Voorwaarden</span><span class="en-only">Terms</span></a></li>
+        <li><a href="#faq"><span class="nl-only">Veelgestelde vragen</span><span class="en-only">FAQ</span></a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <span class="footer-copy">© 2026 cadans.</span>
     </div>
